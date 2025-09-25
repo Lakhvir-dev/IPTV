@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ASOTvPlayer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary -->
+        <item name="colorPrimary">@color/midnight_black</item>
+        <item name="colorPrimaryVariant">@color/deep_night</item>
+        <item name="colorOnPrimary">@color/electric_violet</item>
+
+        <!-- Secondary -->
+        <item name="colorSecondary">@color/royal_indigo</item>
+        <item name="colorSecondaryVariant">@color/plum_glow</item>
+        <item name="colorOnSecondary">@color/electric_violet</item>
+
+
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/deep_night</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>

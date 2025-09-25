@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:id="@+id/rlFirstGrid"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:padding="@dimen/_5sdp">
+
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/flContainerFirst"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent" />-->
+
+                <com.google.android.exoplayer2.ui.StyledPlayerView
+                    android:id="@+id/spvFirst"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:keepScreenOn="true"
+                    app:resize_mode="fit"
+                    app:show_buffering="always"
+                    app:show_timeout="2000"
+                    app:use_controller="false" />
+
+                <ImageView
+                    android:id="@+id/ivFirstAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/images"
+                    android:src="@drawable/ic_add_multi_screen" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:id="@+id/rlSecondGrid"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:padding="@dimen/_5sdp">
+
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/flContainerSecond"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent" />-->
+
+                <com.google.android.exoplayer2.ui.StyledPlayerView
+                    android:id="@+id/spvSecond"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:keepScreenOn="true"
+                    app:resize_mode="fit"
+                    app:show_buffering="always"
+                    app:show_timeout="2000"
+                    app:use_controller="false" />
+
+                <ImageView
+                    android:id="@+id/ivSecondAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/images"
+                    android:src="@drawable/ic_add_multi_screen" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlThirdGrid"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:padding="@dimen/_5sdp">
+
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/flContainerThird"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent" />-->
+
+                <com.google.android.exoplayer2.ui.StyledPlayerView
+                    android:id="@+id/spvThird"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:keepScreenOn="true"
+                    app:resize_mode="fit"
+                    app:show_buffering="always"
+                    app:show_timeout="2000"
+                    app:use_controller="false" />
+
+                <ImageView
+                    android:id="@+id/ivThirdAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/images"
+                    android:src="@drawable/ic_add_multi_screen" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:id="@+id/rlFourthGrid"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:padding="@dimen/_5sdp">
+
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/flContainerFourth"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent" />-->
+
+                <com.google.android.exoplayer2.ui.StyledPlayerView
+                    android:id="@+id/spvFourth"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:keepScreenOn="true"
+                    app:resize_mode="fit"
+                    app:show_buffering="always"
+                    app:show_timeout="2000"
+                    app:use_controller="false" />
+
+                <ImageView
+                    android:id="@+id/ivFourthAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/images"
+                    android:src="@drawable/ic_add_multi_screen" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/midnight_black"
+        tools:context=".activity.login_type.LoginTypeActivity">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:contentDescription="@string/images"
+            android:src="@drawable/app_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/LabelText_Medium"
+            android:text="@string/choose_playlist_type"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@id/ivLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/streamLogin"
+                    android:layout_width="@dimen/_82sdp"
+                    android:layout_height="@dimen/_85sdp"
+                    android:gravity="center"
+                    app:selector_background="@{@drawable/login_type_selector_background}">
+
+                    <ImageView
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@drawable/unselected_inner_circle"
+                        android:contentDescription="@string/images"
+                        android:padding="@dimen/_7sdp"
+                        android:src="@drawable/ic_stream"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        style="@style/LabelText_Regular"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:text="@string/stream_login"
+                        android:textSize="@dimen/_8ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Space
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="wrap_content" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="@dimen/_82sdp"
+                    android:layout_height="@dimen/_85sdp"
+                    android:gravity="center"
+                    app:selector_background="@{@drawable/login_type_selector_background}">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@drawable/unselected_inner_circle"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:contentDescription="@string/images"
+                            android:src="@drawable/ic_m3u_login" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/LabelText_Regular"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:text="@string/m3u_login"
+                        android:textSize="@dimen/_8ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Space
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="wrap_content" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="@dimen/_82sdp"
+                    android:layout_height="@dimen/_85sdp"
+                    android:gravity="center"
+                    app:selector_background="@{@drawable/login_type_selector_background}">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@drawable/unselected_inner_circle"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:contentDescription="@string/images"
+                            android:src="@drawable/ic_local_audio_video" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/LabelText_Regular"
+                        android:layout_width="0dp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:gravity="center"
+                        android:text="@string/local_audio_video_data"
+                        android:textSize="@dimen/_8ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_12sdp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="@dimen/_82sdp"
+                    android:layout_height="@dimen/_85sdp"
+                    android:gravity="center"
+                    app:selector_background="@{@drawable/login_type_selector_background}">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@drawable/unselected_inner_circle"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:contentDescription="@string/images"
+                            android:src="@drawable/ic_single_stream" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/LabelText_Regular"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:text="@string/single_stream"
+                        android:textSize="@dimen/_8ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Space
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="wrap_content" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="@dimen/_82sdp"
+                    android:layout_height="@dimen/_85sdp"
+                    android:gravity="center"
+                    app:selector_background="@{@drawable/login_type_selector_background}">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@drawable/unselected_inner_circle"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:contentDescription="@string/images"
+                            android:src="@drawable/ic_extreme_playlist" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/LabelText_Regular"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:text="@string/xtreme_playlist"
+                        android:textSize="@dimen/_8ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                style="@style/LabelText_Regular"
+                android:text="@string/by_using_this_application_you_agreee_to_the"
+                android:textSize="@dimen/_8ssp" />
+
+            <TextView
+                style="@style/LabelText_Medium"
+                android:layout_marginStart="8dp"
+                android:paddingHorizontal="4dp"
+                android:text="@string/terms_of_services"
+                android:textSize="@dimen/_8ssp"
+                app:selector_background="@{@drawable/focus_unfocus_selector_background}" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

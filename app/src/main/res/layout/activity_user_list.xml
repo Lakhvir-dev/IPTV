@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dhiman.iptv.activity.user_list.UserListViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/midnight_black"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".activity.user_list.UserListActivity">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:contentDescription="@string/images"
+            android:src="@drawable/app_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            style="@style/LabelText_Medium"
+            android:text="@string/choose_playlist_type"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_85sdp"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:background="@drawable/login_type_selector_background">
+
+                <View
+                    android:id="@+id/mainCircleView"
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginTop="@dimen/_11sdp"
+                    android:background="@drawable/white_circle_drawable"
+                    android:backgroundTint="@color/plum_glow"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:background="@drawable/white_circle_drawable"
+                    android:backgroundTint="@color/electric_violet"
+                    app:layout_constraintBottom_toBottomOf="@id/mainCircleView"
+                    app:layout_constraintEnd_toEndOf="@id/mainCircleView"
+                    app:layout_constraintStart_toStartOf="@id/mainCircleView"
+                    app:layout_constraintTop_toTopOf="@id/mainCircleView" />
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:contentDescription="@string/images"
+                    android:src="@drawable/ic_add_user"
+                    app:layout_constraintBottom_toBottomOf="@id/mainCircleView"
+                    app:layout_constraintEnd_toEndOf="@id/mainCircleView"
+                    app:layout_constraintStart_toStartOf="@id/mainCircleView"
+                    app:layout_constraintTop_toTopOf="@id/mainCircleView" />
+
+                <TextView
+                    style="@style/LabelText_Regular"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/add_user"
+                    android:textSize="@dimen/_8ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                style="@style/LabelText_Regular"
+                android:text="@string/by_using_this_application_you_agreee_to_the"
+                android:textSize="@dimen/_8ssp" />
+
+            <TextView
+                style="@style/LabelText_Medium"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/focus_unfocus_selector_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:paddingHorizontal="4dp"
+                android:text="@string/terms_of_services"
+                android:textSize="@dimen/_8ssp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

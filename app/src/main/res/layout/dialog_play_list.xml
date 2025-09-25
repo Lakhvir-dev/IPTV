@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dhiman.iptv.dialog.add_play_list.AddPlayListViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/bg_dialog"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".activity.disclaimer.DisclaimerActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbarContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.dhiman.iptv.util.custom_view.HelveticaMediumTextView
+                style="@style/DialogHeaderStyle"
+                android:text="@string/load_your_m3u_playlist"
+                app:layout_constraintBottom_toBottomOf="@id/ivCross"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivCross" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{viewModel.isFocusOnBack  ? @color/white_alpha :@color/transparent,  default  = @color/transparent}"
+                android:padding="@dimen/_15sdp"
+                android:src="@drawable/cross"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:onFocusChange="@{viewModel::onFocusChange}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/rbFile"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/file"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp" />
+
+            <RadioButton
+                android:id="@+id/rbUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/url_"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_50sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_50sdp"
+            android:paddingBottom="@dimen/_5sdp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPlayerName"
+                style="@style/TextInputLayoutStyle"
+                android:layout_marginTop="0dp">
+
+                <com.dhiman.iptv.util.custom_view.HelveticaMediumTextInputEditTextView
+                    android:id="@+id/playlistNameEditText"
+                    style="@style/EditTextInputLayoutStyle"
+                    android:hint="@string/playlist_name"
+                    android:padding="@dimen/_5sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llUploadFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@{viewModel.isFocusOnUploadFiles ? @drawable/bg_upload_files_focus :@drawable/bg_upload_files_unfocus , default =@drawable/bg_upload_files_unfocus }"
+                android:gravity="center"
+                android:onClick="@{viewModel::onClick}"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:onFocusChange="@{viewModel::onFocusChange}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/upload_icon" />
+
+                <com.dhiman.iptv.util.custom_view.HelveticaRegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="@string/upload_file"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUploadFile"
+                style="@style/TextInputLayoutStyle"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:clickable="true"
+                android:onClick="@{viewModel::onClick}"
+                android:visibility="@{viewModel.isUploadedFileShowing ? View.VISIBLE :View.GONE , default = gone}"
+                app:boxBackgroundMode="none"
+                app:endIconCheckable="false"
+                app:endIconContentDescription="sdfsa"
+                app:endIconDrawable="@drawable/cross_small"
+                app:endIconMode="custom"
+                app:endIconTint="@color/iridium"
+                app:onFocusChange="@{viewModel::onFocusChange}"
+                tools:visibility="visible">
+
+                <com.dhiman.iptv.util.custom_view.HelveticaRegularTextInputEditTextView
+                    android:id="@+id/etFileName"
+                    style="@style/EditTextInputLayoutStyle"
+                    android:clickable="false"
+                    android:editable="false"
+                    android:focusable="true"
+                    android:gravity="start"
+                    android:onClick="@{viewModel::onClick}"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="@{viewModel.filePath}"
+                    android:textSize="@dimen/_12ssp"
+                    app:onFocusChange="@{viewModel::onFocusChange}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@{viewModel.isFocusOnSelectedFiles  ? @color/white :@color/storm_dust_alpha_65,  default  = @color/storm_dust_alpha_65}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUrlFile"
+                style="@style/TextInputLayoutStyle"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="gone"
+                app:boxBackgroundMode="none"
+                app:onFocusChange="@{viewModel::onFocusChange}">
+
+                <com.dhiman.iptv.util.custom_view.HelveticaRegularTextInputEditTextView
+                    android:id="@+id/etFileUrlName"
+                    style="@style/EditTextInputLayoutStyle"
+                    android:layout_height="45dp"
+                    android:gravity="start"
+                    android:hint="@string/enter_file_url"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingBottom="0dp"
+                    android:textSize="@dimen/_12ssp"
+                    app:onFocusChange="@{viewModel::onFocusChange}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@{viewModel.isFocusOnSelectedFiles  ? @color/white :@color/storm_dust_alpha_65,  default  = @color/storm_dust_alpha_65}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.dhiman.iptv.util.custom_view.HelveticaRegularButton
+                android:id="@+id/btnAdd"
+                style="@style/AppButtonStyleMahogany"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilUploadFile" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dhiman.iptv.dialog.xtream_code.XtreamCodeViewModel" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/bg_dialog"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".activity.disclaimer.DisclaimerActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbarContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.dhiman.iptv.util.custom_view.HelveticaMediumTextView
+                style="@style/DialogHeaderStyle"
+                android:text="@string/login_with_xtream_code"
+                app:layout_constraintBottom_toBottomOf="@id/ivCross"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivCross" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{viewModel.isFocusOnBack  ? @color/white_alpha :@color/transparent,  default  = @color/transparent}"
+                android:padding="@dimen/_15sdp"
+                android:src="@drawable/cross"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:onFocusChange="@{viewModel::onFocusChange}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_50sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_50sdp"
+            android:paddingBottom="@dimen/_5sdp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUrl"
+                style="@style/TextInputLayoutStyle"
+                android:layout_marginTop="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/tilUserName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.dhiman.iptv.util.custom_view.HelveticaMediumTextInputEditTextView
+                    android:id="@+id/urlEditText"
+                    style="@style/EditTextInputLayoutStyle"
+                    android:focusedByDefault="true"
+                    android:hint="@string/enter_url"
+                    android:padding="@dimen/_5sdp"
+                    android:text="http://ys-users.com:8080"
+                    tools:ignore="HardcodedText"
+                    tools:targetApi="o" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUserName"
+                style="@style/TextInputLayoutStyle"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintBottom_toTopOf="@id/tilPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilUrl">
+
+                <com.dhiman.iptv.util.custom_view.HelveticaMediumTextInputEditTextView
+                    android:id="@+id/usernameEditText"
+                    style="@style/EditTextInputLayoutStyle"
+                    android:hint="@string/username"
+                    android:padding="@dimen/_5sdp"
+                    tools:text="apptest"
+                    tools:ignore="HardcodedText" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPassword"
+                style="@style/TextInputLayoutStyle"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintBottom_toTopOf="@id/btnLogin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilUserName">
+
+                <com.dhiman.iptv.util.custom_view.HelveticaMediumTextInputEditTextView
+                    android:id="@+id/passwordEditText"
+                    style="@style/EditTextInputLayoutStyle"
+                    android:hint="@string/password"
+                    android:padding="@dimen/_5sdp"
+                    tools:text="pwd0506"
+                    tools:ignore="HardcodedText" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.dhiman.iptv.util.custom_view.HelveticaRegularButton
+                android:id="@+id/btnLogin"
+                style="@style/AppButtonStyleMahogany"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/login"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilPassword" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

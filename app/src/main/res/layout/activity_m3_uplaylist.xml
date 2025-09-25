@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dhiman.iptv.activity.m3u_playlist.M3UPlaylistViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/mainContainerLinearLayout"
+        android:layout_width="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_bg"
+        android:orientation="vertical"
+        tools:context=".activity.m3u_playlist.M3UPlaylistActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBack"
+                style="@style/BackButtonStyle"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="@{viewModel.isFocusOnBack  ? @color/white_alpha :@color/transparent,  default  = @color/transparent}"
+                android:onClick="@{viewModel::onClick}"
+                app:layout_constraintBottom_toBottomOf="@id/etSearch"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/etSearch"
+                app:onFocusChange="@{viewModel::onFocusChange}" />
+
+            <com.dhiman.iptv.util.custom_view.HelveticaRegularTextInputEditTextView
+                android:id="@+id/etSearch"
+                style="@style/OutlinedSearchEditTextStyle"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/outlined_bg_search"
+                android:hint="@string/search_movies_channels_etc"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <io.github.florent37.shapeofview.shapes.CutCornerView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    app:shape_cutCorner_topRightSize="@dimen/_40sdp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/flush_mahogany" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clTimeContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/_15sdp">
+
+                        <TextClock
+                            android:id="@+id/tvTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:format12Hour="hh:mm"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_16ssp"
+                            app:layout_constraintBottom_toTopOf="@id/tvDate"
+                            app:layout_constraintStart_toStartOf="@id/tvDate" />
+
+                        <TextClock
+                            android:id="@+id/tvTimeFormat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:format12Hour="a"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintBottom_toTopOf="@id/tvDate"
+                            app:layout_constraintStart_toEndOf="@id/tvTime" />
+
+                        <TextClock
+                            android:id="@+id/tvDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:format12Hour="EEEE - dd MMM yyyy"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </io.github.florent37.shapeofview.shapes.CutCornerView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/onyx">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivTopArrow"
+                        android:layout_width="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@{viewModel.isFocusOnUpArrow  ? @color/white_alpha :@color/transparent,  default  = @color/transparent}"
+                        android:nextFocusDown="@+id/ivBottomArrow"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/arrow_up"
+                        app:onFocusChange="@{viewModel::onFocusChange}" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:background="@color/white_alpha_8" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvProgramNameList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@id/ivBottomArrow"
+                        android:layout_below="@id/ivTopArrow"
+                        android:layout_centerInParent="true"
+                        android:clipToPadding="false"
+                        tools:itemCount="10"
+                        tools:listitem="@layout/list_item_program" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivBottomArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@{viewModel.isFocusOnDownArrow  ? @color/white_alpha :@color/transparent,  default  = @color/transparent}"
+                        android:nextFocusUp="@+id/ivTopArrow"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/arrow_down"
+                        app:onFocusChange="@{viewModel::onFocusChange}" />
+
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <io.github.florent37.shapeofview.shapes.CutCornerView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    app:shape_cutCorner_bottomLeftSize="@dimen/_40sdp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/flush_mahogany" />
+
+                    <com.dhiman.iptv.util.custom_view.HelveticaMediumTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/m3u_playlist"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_18ssp" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@color/milano_red"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivMenu"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@{viewModel.isFocusOnGridMenu  ? @color/white_alpha :@color/transparent,  default  = @color/transparent}"
+                            android:onClick="@{viewModel::onClick}"
+                            android:padding="@dimen/_5sdp"
+                            android:src="@{viewModel.isMenuSelected ?@drawable/menu_active :@drawable/menu_inactive, default = @drawable/menu_active}"
+                            app:onFocusChange="@{viewModel::onFocusChange}" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivList"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@{viewModel.isFocusOnListMenu  ? @color/white_alpha :@color/transparent,  default  = @color/transparent}"
+                            android:onClick="@{viewModel::onClick}"
+                            android:padding="@dimen/_5sdp"
+                            android:src="@{viewModel.isMenuSelected ?@drawable/list_inactive :@drawable/list_active, default = @drawable/list_inactive}"
+                            app:onFocusChange="@{viewModel::onFocusChange}" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </io.github.florent37.shapeofview.shapes.CutCornerView>
+
+                <LinearLayout
+                    android:id="@+id/loadingLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.dhiman.iptv.util.custom_view.HelveticaMediumTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:gravity="center"
+                        android:text="@string/please_wait"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15ssp" />
+
+                </LinearLayout>
+
+                <com.dhiman.iptv.util.custom_view.HelveticaMediumTextView
+                    android:id="@+id/noDataTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/no_m3u_playlist_found"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_18ssp"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProgramGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:nextFocusLeft="@+id/ivTopArrow"
+                    android:visibility="@{viewModel.isMenuSelected ? View.VISIBLE :View.GONE, default = visible}"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3"
+                    tools:listitem="@layout/list_item_program_grid_view" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProgramListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:nextFocusLeft="@+id/ivTopArrow"
+                    android:visibility="@{viewModel.isMenuSelected ? View.GONE :View.VISIBLE, default = gone}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/list_item_program_list_view" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

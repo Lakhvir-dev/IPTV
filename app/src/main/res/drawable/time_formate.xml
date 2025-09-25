@@ -1,0 +1,92 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="104dp"
+    android:height="105dp"
+    android:viewportWidth="104"
+    android:viewportHeight="105">
+  <path
+      android:pathData="M52,0L52,0A52,52 0,0 1,104 52L104,53A52,52 0,0 1,52 105L52,105A52,52 0,0 1,0 53L0,52A52,52 0,0 1,52 0z"
+      android:fillColor="#515165"/>
+  <path
+      android:pathData="M58,20A25.962,25.962 0,0 0,32.316 50L56,50a3,3 0,0 1,3 3L59,71.981A26,26 0,0 0,58 20Z">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startY="60.8555"
+          android:startX="42.843594"
+          android:endY="27.634949"
+          android:endX="76.40063"
+          android:type="linear">
+        <item android:offset="0.011" android:color="#FF554431"/>
+        <item android:offset="1" android:color="#FF5F4D37"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M58,24A22.025,22.025 0,0 0,36 46a21.716,21.716 0,0 0,0.379 4L56,50a3,3 0,0 1,3 3L59,67.975A22,22 0,0 0,58 24Z">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startY="58.828197"
+          android:startX="45.212154"
+          android:endY="30.464325"
+          android:endX="73.59793"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFC52C2F"/>
+        <item android:offset="1" android:color="#FFDE2D31"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M56,50L23,50a3,3 0,0 0,-3 3L20,77a3,3 0,0 0,3 3L44.5,80l2.7,3.6a1,1 0,0 0,1.6 0L51.5,80L56,80a3,3 0,0 0,3 -3L59,53A3,3 0,0 0,56 50Z">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startY="81.39657"
+          android:startX="23.12"
+          android:endY="48.63937"
+          android:endX="55.88"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFFFC477"/>
+        <item android:offset="1" android:color="#FFFFDAAA"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M58,46m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0">
+  </path>
+  <path
+      android:pathData="M51,56a2,2 0,0 0,-2 2v5L45,63L45,58a2,2 0,0 0,-4 0v7a2,2 0,0 0,2 2h6v5a2,2 0,0 0,4 0L53,58A2,2 0,0 0,51 56Z">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startY="68.42"
+          android:startX="43.58"
+          android:endY="58.088"
+          android:endX="53.912"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFC52C2F"/>
+        <item android:offset="1" android:color="#FFF2292D"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M35,74L28,74a2,2 0,0 1,-2 -2L26,65a2,2 0,0 1,2 -2h5L33,60L28,60a2,2 0,0 1,0 -4h7a2,2 0,0 1,2 2v7a2,2 0,0 1,-2 2L30,67v3h5a2,2 0,0 1,0 4Z">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startY="68.42"
+          android:startX="28.365"
+          android:endY="58.088"
+          android:endX="37.836"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFC52C2F"/>
+        <item android:offset="1" android:color="#FFF2292D"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M66,45L60.816,45a2.809,2.809 0,0 1,0 2L66,47a1,1 0,0 0,0 -2Z">
+  </path>
+  <path
+      android:pathData="M58,43a2.938,2.938 0,0 1,1 0.185L59,35a1,1 0,0 0,-2 0v8.185A2.938,2.938 0,0 1,58 43Z">
+  </path>
+  <path
+      android:pathData="M58,32a1,1 0,0 1,-1 -1L57,29a1,1 0,0 1,2 0v2A1,1 0,0 1,58 32ZM44,46a1,1 0,0 0,-1 -1L41,45a1,1 0,0 0,0 2h2A1,1 0,0 0,44 46ZM76,46a1,1 0,0 0,-1 -1L73,45a1,1 0,0 0,0 2h2A1,1 0,0 0,76 46ZM51,33.876a1,1 0,0 0,0.366 -1.366l-1,-1.733a1,1 0,1 0,-1.732 1l1,1.733A1,1 0,0 0,51 33.876ZM66,61.589a1,1 0,0 0,0.366 -1.366l-1,-1.732a1,1 0,0 0,-1.732 1l1,1.732A1,1 0,0 0,66 61.589ZM71.491,39.366 L73.222,38.366a1,1 0,1 0,-1 -1.732l-1.731,1a1,1 0,1 0,1 1.732ZM45.876,39a1,1 0,0 0,-0.366 -1.366l-1.733,-1a1,1 0,0 0,-1 1.732l1.733,1A1,1 0,0 0,45.876 39ZM72.589,55a1,1 0,0 0,-0.366 -1.366l-1.732,-1a1,1 0,1 0,-1 1.732l1.732,1A1,1 0,0 0,72.589 55ZM66.368,33.51l1,-1.733a1,1 0,0 0,-1.733 -1l-1,1.733a1,1 0,0 0,1.733 1Z">
+  </path>
+</vector>

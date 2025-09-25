@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dhiman.iptv.dialog.refresh_play_list.RefreshPlayListViewModel" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog"
+        android:orientation="vertical"
+        tools:context=".activity.disclaimer.DisclaimerActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCross"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@{viewModel.isFocusOnBack  ? @color/white_alpha :@color/transparent,  default  = @color/transparent}"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/cross"
+            app:onFocusChange="@{viewModel::onFocusChange}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:paddingBottom="@dimen/_15sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:id="@+id/ivLogo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/refresh_play_list" />
+
+            <com.dhiman.iptv.util.custom_view.HelveticaMediumTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/ivLogo"
+                android:id="@+id/tvHeader"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:includeFontPadding="false"
+                android:text="@string/refresh_selected_playlist"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp" />
+
+            <com.dhiman.iptv.util.custom_view.HelveticaRegularTextView
+                android:id="@+id/tvSubHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/tvHeader"
+                android:includeFontPadding="false"
+                android:text="@string/are_you_sure_you_want_to_refresh_playlist_1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toTopOf="@id/llBottomContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llBottomContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSubHeader">
+
+                <com.dhiman.iptv.util.custom_view.HelveticaRegularButton
+                    android:id="@+id/btnCancel"
+                    style="@style/AppButtonStyleIridium"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content" />
+
+                <com.dhiman.iptv.util.custom_view.HelveticaRegularButton
+                    android:id="@+id/btnSave"
+                    style="@style/AppButtonStyleMahogany"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

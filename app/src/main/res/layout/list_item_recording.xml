@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        tools:context=".activity.disclaimer.DisclaimerActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivUserImage"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/recording"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.dhiman.iptv.util.custom_view.HelveticaMediumTextView
+            android:id="@+id/tvFileName"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toStartOf="@id/ivLive"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintStart_toEndOf="@id/ivUserImage"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toTopOf="@+id/tvFolderName"
+            app:layout_constraintTop_toTopOf="@id/ivUserImage"
+            android:text="@string/user"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11ssp"
+            />
+
+        <com.dhiman.iptv.util.custom_view.HelveticaRegularTextView
+            android:layout_width="0dp"
+            android:id="@+id/tvFolderName"
+            app:layout_constraintEnd_toEndOf="@id/tvFileName"
+            app:layout_constraintStart_toStartOf="@id/tvFileName"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toBottomOf="@id/ivUserImage"
+            app:layout_constraintTop_toBottomOf="@id/tvFileName"
+            android:text="File Size : 11 MB"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9ssp"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/next"
+            android:id="@+id/ivLive"
+           app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivUserImage"
+            app:layout_constraintBottom_toBottomOf="@id/ivUserImage"/>
+
+
+
+        <com.dhiman.iptv.util.custom_view.HelveticaRegularTextView
+            android:layout_width="0dp"
+            android:id="@+id/tvDate"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:drawablePadding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:drawableStart="@drawable/date"
+            app:layout_constraintStart_toStartOf="@id/tvFileName"
+            app:layout_constraintTop_toBottomOf="@id/ivUserImage"
+            android:text="04 july, 2020"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9ssp"
+            />
+        <com.dhiman.iptv.util.custom_view.HelveticaRegularTextView
+            android:layout_width="0dp"
+            android:id="@+id/tvTime"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableStart="@drawable/time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivUserImage"
+            android:text="10:00 AM"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9ssp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvDate"
+            app:layout_constraintTop_toBottomOf="@id/tvDate"
+            android:background="#525257"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

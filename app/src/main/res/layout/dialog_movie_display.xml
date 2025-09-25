@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dhiman.iptv.dialog.movie_display.MovieDisplayViewModel" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+
+        tools:context=".activity.disclaimer.DisclaimerActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbarContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <com.dhiman.iptv.util.custom_view.HelveticaMediumTextView
+                style="@style/DialogHeaderStyle"
+                android:text="Flashout-2019"
+                app:layout_constraintBottom_toBottomOf="@id/ivCross"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivCross" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{viewModel.isFocusOnBack  ? @color/white_alpha :@color/transparent,  default  = @color/transparent}"
+                android:padding="@dimen/_15sdp"
+                android:src="@drawable/cross"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:onFocusChange="@{viewModel::onFocusChange}" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsvBottomContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingTop="@dimen/_15sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:paddingBottom="@dimen/_15sdp">
+
+
+
+
+
+                <com.dhiman.iptv.util.custom_view.HelveticaRegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Do you wish to resume from where you stopped ?"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp" />
+
+
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <com.dhiman.iptv.util.custom_view.HelveticaRegularButton
+                        android:id="@+id/btnResume"
+                        style="@style/AppButtonStyleIridium"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Resume" />
+
+                    <Space
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="wrap_content" />
+
+                    <com.dhiman.iptv.util.custom_view.HelveticaRegularButton
+                        android:id="@+id/btnStartOver"
+                        style="@style/AppButtonStyleMahogany"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Start Over" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

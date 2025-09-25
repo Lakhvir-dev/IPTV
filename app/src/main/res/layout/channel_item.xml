@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_5sdp"
+        android:paddingVertical="@dimen/_3sdp">
+
+        <TextView
+            android:id="@+id/channelNumberTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_5ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/channelIv"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toEndOf="@id/channelNumberTv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/channelNameTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:text="CNN Channel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_5ssp"
+            app:layout_constraintEnd_toStartOf="@id/favouriteIv"
+            app:layout_constraintStart_toEndOf="@id/channelIv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/channelDescriptionTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:text="Program info Entertainment "
+            android:textColor="@color/white"
+            android:textSize="@dimen/_5ssp"
+            app:layout_constraintEnd_toStartOf="@id/favouriteIv"
+            app:layout_constraintStart_toEndOf="@id/channelIv"
+            app:layout_constraintTop_toBottomOf="@id/channelNameTv" />
+
+        <SeekBar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="40"
+            android:progressBackgroundTint="@color/white_alpha_70"
+            android:progressTint="@color/electric_violet"
+            android:thumbTint="@color/electric_violet"
+            app:layout_constraintEnd_toStartOf="@id/favouriteIv"
+            app:layout_constraintStart_toEndOf="@id/channelIv"
+            app:layout_constraintTop_toBottomOf="@id/channelDescriptionTv" />
+
+        <ImageView
+            android:id="@+id/favouriteIv"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:src="@drawable/fav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
