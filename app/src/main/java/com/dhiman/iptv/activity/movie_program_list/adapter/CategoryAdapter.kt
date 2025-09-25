@@ -10,7 +10,7 @@ import com.dhiman.iptv.util.gone
 import com.dhiman.iptv.util.visible
 
 class CategoryAdapter(
-    private val categoryList: List<MovieProgramListActivity.Category>
+    private val categoryList: List<MovieProgramListActivity.Category>,var click:((String)-> Unit)?=null
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(val binding: ItemCategoryBinding) :
@@ -31,7 +31,9 @@ class CategoryAdapter(
         holder.binding.recyclerViewMovies.apply {
             val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             this.layoutManager = layoutManager
-            adapter = MovieAdapter(category.movies)
+            adapter = MovieAdapter(category.movies){
+                click?.invoke(it)
+            }
 
             holder.binding.btnLeft.setOnClickListener {
                 val firstVisible = layoutManager.findFirstVisibleItemPosition()

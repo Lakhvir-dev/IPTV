@@ -7,7 +7,7 @@ import com.dhiman.iptv.activity.movie_program_list.MovieProgramListActivity
 import com.dhiman.iptv.databinding.MovieItemBinding
 
 class MovieAdapter(
-    private val movieList: List<MovieProgramListActivity.Movie>
+    private val movieList: List<MovieProgramListActivity.Movie>,var click:((String)-> Unit)?=null
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(val binding: MovieItemBinding) :
@@ -22,6 +22,10 @@ class MovieAdapter(
         val movie = movieList[position]
         //holder.binding.txtTitle.text = movie.title
         movie.movieImage?.let { holder.binding.movieIv.setImageResource(it) }
+
+        holder.binding.movieIv.setOnClickListener {
+            click?.invoke("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4")
+        }
     }
 
     override fun getItemCount(): Int = movieList.size
