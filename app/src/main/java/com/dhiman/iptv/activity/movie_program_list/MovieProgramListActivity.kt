@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dhiman.iptv.activity.BaseActivity
 import com.dhiman.iptv.activity.movie_program_list.adapter.CategoryAdapter
-import com.dhiman.iptv.activity.movie_program_list.adapter.MovieAdapter
 import com.dhiman.iptv.activity.player.PlayerActivity
 import com.dhiman.iptv.databinding.ActivityMovieProgramListBinding
 import com.dhiman.iptv.util.ConstantUtil

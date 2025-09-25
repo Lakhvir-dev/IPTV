@@ -16,7 +16,6 @@
         android:id="@+id/mainContainerLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/deep_night"
         android:orientation="vertical"
         tools:context=".activity.series_program.SeriesProgramActivity">
 
@@ -178,17 +177,17 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/seriesGridRv"
+                    android:id="@+id/movieGridRv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginVertical="@dimen/_5sdp"
-                    android:background="@color/deep_night"
-                    android:paddingHorizontal="@dimen/_20sdp"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/movie_bg_gradient"
                     app:layout_constraintTop_toBottomOf="@id/seriesCategoryLt"
-                    app:spanCount="6"
                     tools:itemCount="100"
-                    tools:listitem="@layout/series_item" />
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:listitem="@layout/item_category" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
