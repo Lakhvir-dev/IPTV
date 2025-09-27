@@ -25,7 +25,13 @@ class SeriesProgramActivity : BaseActivity<ActivitySeriesProgramBinding>(
         binding.viewModel = viewModel
         putMoviesData()
         categoryAdapter()
+        handleClicks()
+    }
 
+    fun handleClicks(){
+        binding.menuIcon.setOnClickListener {
+            startActivity(Intent(this@SeriesProgramActivity, SeriesDetailsActivity::class.java))
+        }
     }
 
     fun putMoviesData(){

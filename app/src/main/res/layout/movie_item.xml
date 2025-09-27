@@ -14,31 +14,61 @@
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_100sdp"
             android:scaleType="centerCrop"
+            android:src="@drawable/avengers"
             app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/ic_launcher_background"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/RoundedImage" />
 
         <TextView
             android:id="@+id/movieNameTv"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="5"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="visible"
+            android:background="@drawable/bg_purple"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/movieIv" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="5"
+            android:src="@drawable/ic_fav_unfill"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="visible"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/movieIv"  />
+
+
+        <TextView
+            android:id="@+id/movieTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_2sdp"
-            android:text="@string/app_name"
-            android:visibility="gone"
+            android:text="The Avenger"
+            android:visibility="visible"
             android:textColor="@color/white"
+            android:textSize="@dimen/_9sdp"
             app:layout_constraintTop_toBottomOf="@id/movieIv" />
+
 
         <TextView
             android:id="@+id/movieYearTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_2sdp"
-            android:text="@string/app_name"
-            android:visibility="gone"
+            android:text="2012"
+            android:visibility="visible"
             android:textColor="@color/white"
-            android:textSize="@dimen/_5ssp"
-            app:layout_constraintTop_toBottomOf="@id/movieNameTv" />
+            android:textSize="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@id/movieTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

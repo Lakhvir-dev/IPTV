@@ -63,6 +63,10 @@
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".activity.category.CategoryActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".activity.m3u_playlist.M3UPlaylistActivity"
             android:exported="false"
             android:screenOrientation="landscape" />

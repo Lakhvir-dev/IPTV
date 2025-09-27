@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.viewModelScope
 import com.dhiman.iptv.R
 import com.dhiman.iptv.activity.catch_up.CatchUpItemsListActivity
+import com.dhiman.iptv.activity.category.CategoryActivity
 import com.dhiman.iptv.activity.epg_category.EpgCategoryActivity
 import com.dhiman.iptv.activity.live_program_list.LiveProgramListNewActivity
 import com.dhiman.iptv.activity.m3u_playlist.M3UPlaylistActivity
@@ -92,7 +93,7 @@ class HomeActivityViewModel @Inject constructor(
 
             R.id.movie -> {
                 view.context.apply {
-                    startActivity(Intent(this, MovieProgramListActivity::class.java))
+                    startActivity(Intent(this, CategoryActivity::class.java).putExtra("type","movies"))
                 }
             }
 
@@ -104,7 +105,7 @@ class HomeActivityViewModel @Inject constructor(
 
             R.id.series -> {
                 view.context.apply {
-                    startActivity(Intent(this, SeriesProgramActivity::class.java))
+                    startActivity(Intent(this, CategoryActivity::class.java).putExtra("type","series"))
                 }
             }
 

@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_5sdp"
-        app:selector_background="@{@drawable/movie_category_selector}">
+      >
 
         <TextView
             android:id="@+id/categoryNameTv"

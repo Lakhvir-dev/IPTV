@@ -9,13 +9,14 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.dhiman.iptv.R
 import com.dhiman.iptv.data.local.db.entity.LiveCategoryModel
+import com.dhiman.iptv.databinding.EpgCategoryItemBinding
 import com.dhiman.iptv.databinding.ListItemCategoryBinding
 import com.dhiman.iptv.util.OnFocusChangeListenerInterface
 import com.dhiman.iptv.util.onFocusChange
 import java.util.*
 import kotlin.collections.ArrayList
 
-class CatchUpAdapter(val dataList: List<LiveCategoryModel>) :
+class CatchUpAdapter(val dataList: List<LiveCategoryModel>,val callback:((String)-> Unit)?=null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     Filterable {
 
@@ -27,7 +28,7 @@ class CatchUpAdapter(val dataList: List<LiveCategoryModel>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return CatchUpViewHolder(
-            ListItemCategoryBinding.inflate(
+            EpgCategoryItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -39,17 +40,14 @@ class CatchUpAdapter(val dataList: List<LiveCategoryModel>) :
         holder as CatchUpViewHolder
 
         val model = filterDataList[position]
+        holder.binding.apply {
+            categoryNameTv.text = model.categoryName
+            categoryCounterTv.text = model.categoryId
+        }
         holder.apply {
-            binding.apply {
-                tvCategoryName.text = model.categoryName
-            }
-
             itemView.setOnClickListener {
                 it.context.apply {
-//                    val intent = Intent(this, EpgProgramListActivity::class.java)
-//                    intent.putExtra(ConstantUtil.INTENT_ID, model.categoryId)
-//                    intent.putExtra(ConstantUtil.LIVE_PROGRAM_NAME, model.categoryName)
-//                    startActivity(intent)
+                    callback?.invoke("")
                 }
             }
 
@@ -99,6 +97,6 @@ class CatchUpAdapter(val dataList: List<LiveCategoryModel>) :
         }
     }
 
-    inner class CatchUpViewHolder(val binding: ListItemCategoryBinding) :
+    inner class CatchUpViewHolder(val binding: EpgCategoryItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

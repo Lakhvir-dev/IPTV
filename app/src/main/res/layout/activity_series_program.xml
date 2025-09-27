@@ -47,6 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_160sdp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -63,7 +64,7 @@
                             android:id="@+id/selectedseriesNameTv"
                             android:layout_width="@dimen/_200sdp"
                             android:layout_height="wrap_content"
-                            android:text="@string/app_name"
+                            android:text="The FreeLancer"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_15ssp" />
 
@@ -79,7 +80,7 @@
                                 android:background="@drawable/release_date_background"
                                 android:gravity="center"
                                 android:padding="@dimen/_4sdp"
-                                android:text="@string/app_name"
+                                android:text="01-08-2023"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_8ssp" />
 
@@ -90,7 +91,7 @@
                                 android:layout_marginEnd="@dimen/_5sdp"
                                 android:gravity="center"
                                 android:padding="@dimen/_4sdp"
-                                android:text="@string/app_name"
+                                android:text="2h:33m"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_8ssp" />
 
@@ -101,7 +102,7 @@
                                 android:drawablePadding="@dimen/_5sdp"
                                 android:gravity="center"
                                 android:padding="@dimen/_4sdp"
-                                android:text="@string/app_name"
+                                android:text="8.0"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_8ssp"
                                 app:drawableStartCompat="@drawable/star" />
@@ -115,7 +116,7 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:ellipsize="end"
                             android:maxLines="3"
-                            android:text="@string/app_name"
+                            android:text="Based on the book 'A Ticket To Syria', Avinash Kamath, an ex-cop turned mercenary, takes up the daunting task of rescuing Aliya, a newly married girl trapped in war-torn Syria against the backdrop of growing ISIS terrorism."
                             android:textColor="@color/white" />
 
                         <TextView
@@ -128,6 +129,43 @@
                             android:textColor="@color/white"
                             android:textSize="@dimen/_7ssp"
                             app:selector_background="@{@drawable/button_selector}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_120sdp"
+                        android:layout_marginEnd="@dimen/_50sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <View
+                            android:layout_width="@dimen/_6sdp"
+                            android:layout_height="@dimen/_6sdp"
+                            android:background="@drawable/white_circle_drawable"
+                            android:backgroundTint="@color/electric_violet" />
+
+                        <Space
+                            android:layout_width="@dimen/_3sdp"
+                            android:layout_height="wrap_content" />
+
+                        <View
+                            android:layout_width="@dimen/_4sdp"
+                            android:layout_height="@dimen/_4sdp"
+                            android:background="@drawable/white_circle_drawable" />
+
+                        <Space
+                            android:layout_width="@dimen/_3sdp"
+                            android:layout_height="wrap_content" />
+
+                        <View
+                            android:layout_width="@dimen/_4sdp"
+                            android:layout_height="@dimen/_4sdp"
+                            android:background="@drawable/white_circle_drawable" />
 
                     </LinearLayout>
 
@@ -256,7 +294,6 @@
                     android:id="@+id/menuIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{viewModel.onClick}"
                     android:src="@drawable/more_vert"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

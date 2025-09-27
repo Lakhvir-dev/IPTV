@@ -153,6 +153,7 @@
                         android:layout_height="wrap_content" />
 
                     <EditText
+                        android:id="@+id/etPlayList"
                         style="@style/CustomEditText"
                         android:hint="@string/playlist_name"
                         android:textSize="@dimen/_7ssp" />
@@ -179,8 +180,10 @@
                         android:layout_height="wrap_content" />
 
                     <EditText
+                        android:id="@+id/usernameEditText"
                         style="@style/CustomEditText"
                         android:hint="@string/username"
+                        android:text="THQDS62H"
                         android:textSize="@dimen/_7ssp" />
 
                 </LinearLayout>
@@ -205,8 +208,10 @@
                         android:layout_height="wrap_content" />
 
                     <EditText
+                        android:id="@+id/passwordEditText"
                         style="@style/CustomEditText"
                         android:hint="@string/password"
+                        android:text="GRLVR5LS"
                         android:textSize="@dimen/_7ssp" />
 
                 </LinearLayout>
@@ -231,8 +236,10 @@
                         android:layout_height="wrap_content" />
 
                     <EditText
+                        android:id="@+id/etUrl"
                         style="@style/CustomEditText"
                         android:hint="@string/url"
+                        android:text="http://dszjpwjr.mexamo.xyz"
                         android:textSize="@dimen/_7ssp" />
 
                 </LinearLayout>

@@ -12,10 +12,39 @@
             android:layout_height="@dimen/_70sdp"
             android:contentDescription="@string/episodes"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/avengers"
             app:layout_constraintTop_toTopOf="parent"
             app:selector_background="@{@drawable/movie_item_selector}"
             app:shapeAppearanceOverlay="@style/RoundedImage" />
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/episodeThumbnailIv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/episodeThumbnailIv"
+            android:src="@drawable/ic_play" />
+
+
+        <TextView
+            android:id="@+id/movieNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="@string/_1h_30m"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_2sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="visible"
+            android:background="@drawable/bg_purple"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/episodeThumbnailIv" />
+
+
 
         <TextView
             android:id="@+id/episodeNameTv"

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dhiman.iptv.activity.BaseActivity
+import com.dhiman.iptv.activity.movie.MovieDetailsActivity
 import com.dhiman.iptv.activity.movie_program_list.adapter.CategoryAdapter
 import com.dhiman.iptv.activity.player.PlayerActivity
 import com.dhiman.iptv.databinding.ActivityMovieProgramListBinding
@@ -23,6 +24,7 @@ class MovieProgramListActivity : BaseActivity<ActivityMovieProgramListBinding>(
     override fun onActivityReady() {
         binding.viewModel = viewModel
         putMoviesData()
+        setClicks()
     }
 
     override fun onClick(
@@ -34,6 +36,11 @@ class MovieProgramListActivity : BaseActivity<ActivityMovieProgramListBinding>(
 
     }
 
+    fun setClicks(){
+        binding.menuIcon.setOnClickListener {
+            startActivity(Intent(this@MovieProgramListActivity, MovieDetailsActivity::class.java))
+        }
+    }
     fun putMoviesData(){
         val favourites = listOf(
             Movie("Avengers", com.dhiman.iptv.R.drawable.avengers),

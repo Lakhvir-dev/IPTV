@@ -7,14 +7,15 @@
         android:layout_height="wrap_content"
         android:focusable="true"
         android:padding="@dimen/_3sdp"
-        app:selector_background="@{@drawable/movie_item_selector}">
+     >
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/movieIv"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_75sdp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/avengers"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/RoundedImage" />
 

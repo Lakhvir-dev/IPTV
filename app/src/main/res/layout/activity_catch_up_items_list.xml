@@ -61,6 +61,7 @@
             app:layout_constraintEnd_toStartOf="@id/catchUpCategoryListRv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appBar"
+            app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/catch_up_category_item" />
 
         <androidx.recyclerview.widget.RecyclerView
