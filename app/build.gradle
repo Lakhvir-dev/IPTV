@@ -18,7 +18,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField 'String', 'BASE_URL', "\"http://lume-dns.com:8080\""
+        buildConfigField 'String', 'BASE_URL', "\"http://dszjpwjr.mexamo.xyz\""
 
         ndk {
             abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a', 'x86', 'x86_64'
@@ -90,12 +90,20 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-reflect:2.1.20"
 
-    // Networking
+   /* // Networking
     implementation 'com.squareup.retrofit2:converter-scalars:3.0.0'
     implementation 'com.squareup.retrofit2:converter-moshi:3.0.0'
     implementation 'com.squareup.retrofit2:retrofit:3.0.0'
     implementation 'com.squareup.okhttp3:okhttp:5.1.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.1.0'
+*/
+
+    // Networking
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.7'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7'
 
     // Coroutine
     def coroutines_version = "1.10.2"

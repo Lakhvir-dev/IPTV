@@ -55,10 +55,12 @@
             app:layout_constraintTop_toBottomOf="@id/channelNameTv" />
 
         <SeekBar
+            android:id="@+id/seekbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:max="100"
             android:progress="40"
+            android:enabled="false"
             android:progressBackgroundTint="@color/white_alpha_70"
             android:progressTint="@color/electric_violet"
             android:thumbTint="@color/electric_violet"

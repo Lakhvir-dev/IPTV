@@ -7,6 +7,7 @@
         android:layout_height="wrap_content"
         android:focusable="true"
         android:padding="@dimen/_5sdp"
+        app:selector_background="@{@drawable/focus_unfocus_selector_background}"
        >
 
         <com.google.android.material.imageview.ShapeableImageView

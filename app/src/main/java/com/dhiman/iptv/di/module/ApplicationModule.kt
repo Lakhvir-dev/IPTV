@@ -10,6 +10,7 @@ import com.dhiman.iptv.data.api.ApiService
 import com.dhiman.iptv.data.local.db.AppDatabase
 import com.dhiman.iptv.data.local.prefs.SharedPrefs
 import com.dhiman.iptv.util.ConstantUtil
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -52,12 +53,12 @@ class ApplicationModule {
         baseUrl: String
     ): Retrofit {
         val retrofitBaseUrl = baseUrl.ifEmpty {
-            "http://lume-dns.com:8080"
+            "http://dszjpwjr.mexamo.xyz/"
         }
-
+        val moshi = Moshi.Builder().build()
         return Retrofit.Builder()
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(MoshiConverterFactory.create())
             .baseUrl(retrofitBaseUrl)
             .client(okHttpClient)
             .build()

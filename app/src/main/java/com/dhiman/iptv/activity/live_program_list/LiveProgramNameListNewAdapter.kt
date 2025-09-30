@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dhiman.iptv.R
 import com.dhiman.iptv.data.local.db.entity.LiveCategoryModel
+import com.dhiman.iptv.util.OnFocusChangeListenerInterface
+import com.dhiman.iptv.util.onFocusChange
 
 class LiveProgramNameListNewAdapter(
     private val programNameList: List<LiveCategoryModel>,
@@ -25,6 +27,16 @@ class LiveProgramNameListNewAdapter(
         holder.itemView.setOnClickListener {
             callback?.invoke(position)
         }
+
+        holder.itemView.onFocusChange(object : OnFocusChangeListenerInterface {
+            override fun onFocus(view: View, value: Boolean) {
+                if (value) {
+                    holder.itemView.setBackgroundResource(R.color.white_alpha)
+                } else {
+                    holder.itemView.setBackgroundResource(R.color.transparent)
+                }
+            }
+        })
     }
 
     override fun getItemCount(): Int {
@@ -32,6 +44,6 @@ class LiveProgramNameListNewAdapter(
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val channelCategoryName: TextView = view.findViewById(R.id.channelCategoryName)
+        val channelCategoryName: TextView = view.findViewById(R.id.categoryNameTv)
     }
 }
