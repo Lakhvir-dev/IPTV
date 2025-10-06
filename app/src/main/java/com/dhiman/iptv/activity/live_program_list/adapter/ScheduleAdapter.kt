@@ -33,14 +33,14 @@ class ScheduleAdapter(
             holder.binding.tvMatch.setTypeface(null, Typeface.NORMAL)
         }
 
-        holder.binding.root.setOnFocusChangeListener { _, hasFocus ->
+       /* holder.binding.root.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 val oldPosition = focusedPosition
                 focusedPosition = position
                 notifyItemChanged(oldPosition)
                 notifyItemChanged(position)
             }
-        }
+        }*/
     }
 
     override fun getItemCount(): Int = items.size

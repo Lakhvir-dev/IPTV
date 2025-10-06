@@ -23,7 +23,7 @@ class MovieAdapter(
         //holder.binding.txtTitle.text = movie.title
         movie.movieImage?.let { holder.binding.movieIv.setImageResource(it) }
 
-        holder.binding.movieIv.setOnClickListener {
+        holder.binding.root.setOnClickListener {
             click?.invoke("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4")
         }
     }

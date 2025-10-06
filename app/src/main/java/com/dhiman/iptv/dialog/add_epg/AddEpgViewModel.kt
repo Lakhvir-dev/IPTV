@@ -123,7 +123,7 @@ class AddEpgViewModel @Inject constructor(
                         }
                     }
                 } catch (e: Exception) {
-                    epgData.postValue(Resource.error("Something Went Wrong", null))
+                    epgData.postValue(Resource.error(e.localizedMessage, null))
                 }
             } else {
                 epgData.postValue(Resource.error("No internet connection", null))

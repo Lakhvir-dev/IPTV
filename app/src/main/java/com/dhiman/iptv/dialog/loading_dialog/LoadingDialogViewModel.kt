@@ -302,7 +302,7 @@ class LoadingDialogViewModel @Inject constructor(
                         }
                     }
                 } catch (e: Exception) {
-                    liveCategoriesData.postValue(Resource.error("Something Went Wrong", null))
+                    liveCategoriesData.postValue(Resource.error(e.localizedMessage, null))
                 }
             } else {
                 liveCategoriesData.postValue(Resource.error("No internet connection", null))

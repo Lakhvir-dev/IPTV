@@ -31,9 +31,9 @@ class SteamLoginActivity :
     override fun onActivityReady() {
         binding.apply {
             btnLogin.setOnClickListener {
-             //  startActivity(Intent(this@SteamLoginActivity, HomeActivity::class.java))
+              startActivity(Intent(this@SteamLoginActivity, HomeActivity::class.java))
 
-                   if (binding.etUrl.text.toString().trim().isEmpty() ||
+                  /* if (binding.etUrl.text.toString().trim().isEmpty() ||
                        binding.usernameEditText.text.toString().trim().isEmpty() ||
                        binding.passwordEditText.text.toString().trim().isEmpty()
                    ) {
@@ -44,7 +44,7 @@ class SteamLoginActivity :
                            binding.usernameEditText.text.toString(),
                            binding.passwordEditText.text.toString()
                        )
-                   }
+                   }*/
             }
 
             llUserList.setOnClickListener {
