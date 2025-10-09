@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.viewModelScope
 import com.dhiman.iptv.R
+import com.dhiman.iptv.activity.catch_up.CatchUpChannelsActivity
 import com.dhiman.iptv.activity.catch_up.CatchUpItemsListActivity
 import com.dhiman.iptv.activity.category.CategoryActivity
 import com.dhiman.iptv.activity.epg_category.EpgCategoryActivity
@@ -77,7 +78,7 @@ class HomeActivityViewModel @Inject constructor(
                         startActivity(Intent(this, M3UPlaylistActivity::class.java))
                     } else {
                         if (checkDataUpdateOrNot()) {
-                            startActivity(Intent(this, CatchUpItemsListActivity::class.java))
+                            startActivity(Intent(this, CatchUpChannelsActivity::class.java))
                         } else {
                             refreshData(view.context)
                         }

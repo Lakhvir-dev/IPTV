@@ -7,6 +7,9 @@ import android.os.Looper
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.dhiman.iptv.R
 import com.dhiman.iptv.activity.player.PlayerActivity
 import com.dhiman.iptv.data.local.prefs.SharedPrefs
@@ -26,6 +29,7 @@ class CatchUpChannelsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCatchUpChannelsBinding
     private val viewModel: CatchUpChannelVM by viewModels()
     private var streamId: String = ""
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,35 +37,73 @@ class CatchUpChannelsActivity : AppCompatActivity() {
         binding.viewModel = viewModel
 
         /** Get Data From Intent & Setup UI & Data */
-        getDataFromIntentAndSetupUI()
+     //   getDataFromIntentAndSetupUI()
 
         /** Observer Listeners */
-        observerListeners()
+       // observerListeners()
 
         /** Set up onFocus Change Listeners */
-        setUpFocusChangeListeners()
+      //  setUpFocusChangeListeners()
+
+       // recyclerViewSetup()
+
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        setupSidebarNavigation()
+
     }
+
+    private fun setupSidebarNavigation() {
+       /* binding.ivAccount.setOnClickListener {
+            navigateIfNotCurrent(R.id.multiScreenFragment)
+        }*/
+      /*  binding.ivSearch.setOnClickListener {
+            navigateIfNotCurrent(R.id.searchFragment)
+        }*/
+        binding.ivLiveTv.setOnClickListener {
+            navigateIfNotCurrent(R.id.liveProgramList)
+        }
+        binding.ivMovies.setOnClickListener {
+            navigateIfNotCurrent(R.id.moviesActivity)
+        }
+        binding.ivSeries.setOnClickListener {
+            navigateIfNotCurrent(R.id.seriesActivity)
+        }
+        binding.ivCatchUp.setOnClickListener {
+            navigateIfNotCurrent(R.id.catchUpFragment)
+        }
+    }
+
+    private fun navigateIfNotCurrent(destinationId: Int) {
+        if (navController.currentDestination?.id != destinationId) {
+            navController.navigate(destinationId)
+        }
+    }
+
 
     /**
      * Set up onFocus Change Listeners
      */
-    private fun setUpFocusChangeListeners() {
+  /*  private fun setUpFocusChangeListeners() {
         binding.ivBack.requestFocus()
         Handler(Looper.getMainLooper()).postDelayed({
             binding.ivBack.requestFocus()
         }, 500)
-    }
+    }*/
 
     /**
      * Observer Listeners
      */
-    private fun observerListeners() {
+/*    private fun observerListeners() {
         viewModel.catchUpChannelProgramsLiveData.observe(this) {
             when (it.status) {
                 Status.SUCCESS -> {
                     ProgressDialogPref.hideLoader()
 
-                    /** Setup Channel Programs Recycler View Setup */
+                    *//** Setup Channel Programs Recycler View Setup *//*
                     it.data?.epgListings?.let { list -> recyclerViewSetup(list) }
                 }
                 Status.LOADING -> {
@@ -96,7 +138,7 @@ class CatchUpChannelsActivity : AppCompatActivity() {
         binding.rvChannels.adapter = adapter
     }
 
-    /** Get Data From Intent & Setup UI & Data */
+    *//** Get Data From Intent & Setup UI & Data *//*
     private fun getDataFromIntentAndSetupUI() {
         currentUserModel = sharedPrefs.getCurrentUser()
         if (intent.hasExtra(ConstantUtil.INTENT_STREAM_ID)) {
@@ -107,6 +149,6 @@ class CatchUpChannelsActivity : AppCompatActivity() {
 
             viewModel.getAllChannelProgramsApi(currentUserModel, streamId)
         }
-    }
+    }*/
 
 }

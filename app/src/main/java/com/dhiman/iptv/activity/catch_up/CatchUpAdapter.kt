@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dhiman.iptv.R
 import com.dhiman.iptv.data.local.db.entity.LiveCategoryModel
 import com.dhiman.iptv.databinding.EpgCategoryItemBinding
+import com.dhiman.iptv.databinding.ItemEpgChannelBinding
 import com.dhiman.iptv.databinding.ListItemCategoryBinding
 import com.dhiman.iptv.util.OnFocusChangeListenerInterface
 import com.dhiman.iptv.util.onFocusChange
 import java.util.*
 import kotlin.collections.ArrayList
 
-class CatchUpAdapter(val dataList: List<LiveCategoryModel>,val callback:((String)-> Unit)?=null) :
+class CatchUpAdapter(val dataList: List<LiveCategoryModel>, val callback:((String)-> Unit)?=null
+                     ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     Filterable {
 
@@ -28,7 +30,7 @@ class CatchUpAdapter(val dataList: List<LiveCategoryModel>,val callback:((String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return CatchUpViewHolder(
-            EpgCategoryItemBinding.inflate(
+            ItemEpgChannelBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -41,8 +43,8 @@ class CatchUpAdapter(val dataList: List<LiveCategoryModel>,val callback:((String
 
         val model = filterDataList[position]
         holder.binding.apply {
-            categoryNameTv.text = model.categoryName
-            categoryCounterTv.text = model.categoryId
+            channelName.text = model.categoryName
+            channelCount.text = model.categoryId
         }
         holder.apply {
             itemView.setOnClickListener {
@@ -51,7 +53,7 @@ class CatchUpAdapter(val dataList: List<LiveCategoryModel>,val callback:((String
                 }
             }
 
-            itemView.onFocusChange(object : OnFocusChangeListenerInterface {
+          /*  itemView.onFocusChange(object : OnFocusChangeListenerInterface {
                 override fun onFocus(view: View, value: Boolean) {
                     if (value) {
                         holder.itemView.setBackgroundResource(R.color.white_alpha)
@@ -59,7 +61,7 @@ class CatchUpAdapter(val dataList: List<LiveCategoryModel>,val callback:((String
                         holder.itemView.setBackgroundResource(R.color.transparent)
                     }
                 }
-            })
+            })*/
         }
     }
 
@@ -97,6 +99,6 @@ class CatchUpAdapter(val dataList: List<LiveCategoryModel>,val callback:((String
         }
     }
 
-    inner class CatchUpViewHolder(val binding: EpgCategoryItemBinding) :
+    inner class CatchUpViewHolder(val binding: ItemEpgChannelBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

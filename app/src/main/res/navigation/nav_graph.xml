@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/catchUpFragment">
+
+
+    <fragment
+        android:id="@+id/catchUpFragment"
+        android:name="com.dhiman.iptv.activity.catch_up.CatchUpFragment"
+        android:label="Catch Up" />
+
+    <activity
+        android:id="@+id/liveProgramList"
+        android:name="com.dhiman.iptv.activity.live_program_list.LiveProgramListNewActivity"
+        android:label="Live Program List" />
+
+    <activity
+        android:id="@+id/moviesActivity"
+        android:name="com.dhiman.iptv.activity.movie_program_list.MovieProgramListActivity"
+        android:label="Movies Program List" />
+
+  <activity
+        android:id="@+id/seriesActivity"
+        android:name="com.dhiman.iptv.activity.series_program.SeriesProgramActivity"
+        android:label="Series Program List" />
+
+</navigation>

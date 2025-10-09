@@ -5,6 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_category_item_2"
         android:paddingHorizontal="@dimen/_5sdp"
         android:paddingVertical="@dimen/_3sdp">
 
@@ -61,6 +62,8 @@
             android:max="100"
             android:progress="40"
             android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:progressBackgroundTint="@color/white_alpha_70"
             android:progressTint="@color/electric_violet"
             android:thumbTint="@color/electric_violet"

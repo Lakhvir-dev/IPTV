@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_5sdp"
-        app:selector_background="@{@drawable/focus_unfocus_selector_background}"
+        android:background="@drawable/bg_category_item_2"
       >
 
         <TextView

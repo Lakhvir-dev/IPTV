@@ -38,7 +38,7 @@ class CatchUpChannelProgramAdapter(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder as DataViewHolder
-
+/*
         val model = dataList[position]
         holder.apply {
             binding.tvProgramNameTextView.text = model.title?.decodeBase64()
@@ -71,7 +71,7 @@ class CatchUpChannelProgramAdapter(
                 callback.invoke(position, model)
             }
 
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {

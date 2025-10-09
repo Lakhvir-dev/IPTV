@@ -8,54 +8,43 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_2sdp"
-        android:background="@color/black_cow"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="@dimen/_7sdp"
-        android:paddingVertical="@dimen/_5sdp">
+        android:layout_height="match_parent"
+        android:background="#0B1120">
 
-        <com.dhiman.iptv.util.custom_view.HelveticaRegularTextView
-            android:id="@+id/tvTimeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:textAllCaps="true"
-            android:textColor="@color/white_alpha_50"
-            android:textSize="@dimen/_7ssp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.dhiman.iptv.util.custom_view.HelveticaMediumTextView
-            android:id="@+id/tvProgramNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:ellipsize="end"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_9ssp"
-            app:layout_constraintBottom_toTopOf="@id/tvDetailTextView"
-            app:layout_constraintStart_toStartOf="@id/tvTimeTextView"
-            app:layout_constraintTop_toBottomOf="@id/tvTimeTextView" />
+            <!-- Categories RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerCategories"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:layout_weight="1"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:clipToPadding="false"
+                android:scrollbars="none" />
 
-        <com.dhiman.iptv.util.custom_view.HelveticaRegularTextView
-            android:id="@+id/tvDetailTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:includeFontPadding="false"
-            android:singleLine="true"
-            android:textColor="@color/white_alpha_50"
-            android:textSize="@dimen/_7sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tvTimeTextView" />
+            <!-- Divider line -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#202840" />
+
+            <!-- Channels RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerChannels"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:clipToPadding="false"
+                android:scrollbars="none" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

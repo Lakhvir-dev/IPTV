@@ -54,6 +54,8 @@
     <color name="blue_dark">#13192F</color>
     <color name="dialog_heading">#8135f0</color>
     <color name="dialog_body">#312564</color>
+    <color name="red">#FF0000</color>
+    <color name="dark_navy_blue">#12172C</color>
 
 
     <color name="mtrl_textinput_default_box_stroke_color">@color/storm_dust_alpha_65</color>
