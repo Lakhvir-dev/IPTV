@@ -1,44 +1,45 @@
 package com.dhiman.iptv.activity.movie_program_list
 
 import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.activity.viewModels
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dhiman.iptv.activity.BaseActivity
 import com.dhiman.iptv.activity.movie.MovieDetailsActivity
 import com.dhiman.iptv.activity.movie_program_list.adapter.CategoryAdapter
 import com.dhiman.iptv.activity.player.PlayerActivity
 import com.dhiman.iptv.databinding.ActivityMovieProgramListBinding
 import com.dhiman.iptv.util.ConstantUtil
-import com.dhiman.iptv.util.RecyclerViewClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieProgramListActivity : BaseActivity<ActivityMovieProgramListBinding>(
-    ActivityMovieProgramListBinding::inflate
-), RecyclerViewClickListener {
+class MovieProgramListActivity : Fragment() {
 
     lateinit var categoryAdapter: CategoryAdapter
     private val viewModel: MovieProgramListViewModel by viewModels()
+    var binding: ActivityMovieProgramListBinding? = null
 
-    override fun onActivityReady() {
-        binding.viewModel = viewModel
-        putMoviesData()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding= ActivityMovieProgramListBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.viewModel=viewModel
         setClicks()
+        putMoviesData()
     }
-
-    override fun onClick(
-        view: View,
-        position: Int,
-        selectedModel: Any,
-        childPosition: Int
-    ) {
-
-    }
-
     fun setClicks(){
-        binding.menuIcon.setOnClickListener {
-            startActivity(Intent(this@MovieProgramListActivity, MovieDetailsActivity::class.java))
+        binding?.menuIcon?.setOnClickListener {
+            startActivity(Intent(requireContext(), MovieDetailsActivity::class.java))
         }
     }
     fun putMoviesData(){
@@ -75,13 +76,13 @@ class MovieProgramListActivity : BaseActivity<ActivityMovieProgramListBinding>(
             Category("Recently Added", recentlyAdded)
         )
 
-        binding.movieGridRv.layoutManager = LinearLayoutManager(this)
+        binding?.movieGridRv?.layoutManager = LinearLayoutManager(requireContext())
         categoryAdapter=CategoryAdapter(categoryList){url->
-            val intent = Intent(this, PlayerActivity::class.java)
+            val intent = Intent(requireContext(), PlayerActivity::class.java)
             intent.putExtra(ConstantUtil.INTENT_ID, url)
             startActivity(intent)
         }
-        binding.movieGridRv.adapter = categoryAdapter
+        binding?.movieGridRv?.adapter = categoryAdapter
 
     }
 

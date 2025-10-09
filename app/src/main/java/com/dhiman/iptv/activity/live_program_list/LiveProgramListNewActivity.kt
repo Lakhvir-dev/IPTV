@@ -1,46 +1,46 @@
 package com.dhiman.iptv.activity.live_program_list
 
+import android.app.Activity.RESULT_OK
+import androidx.fragment.app.Fragment
 import android.content.Intent
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.KeyEvent
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dhiman.iptv.activity.BaseActivity
 import com.dhiman.iptv.activity.live_program_list.adapter.ChannelUnderCategoryAdapter
 import com.dhiman.iptv.activity.live_program_list.adapter.DateAdapter
 import com.dhiman.iptv.activity.live_program_list.adapter.ScheduleAdapter
-import com.dhiman.iptv.activity.player.PlayerActivity
 import com.dhiman.iptv.data.local.db.entity.LiveCategoryModel
-import com.dhiman.iptv.data.local.db.entity.LiveStreamCategory
 import com.dhiman.iptv.data.local.prefs.SharedPrefs
 import com.dhiman.iptv.data.model.ChannelUnderCategoryModel
 import com.dhiman.iptv.data.model.UserModel
 import com.dhiman.iptv.databinding.ActivityLiveListNewBinding
 import com.dhiman.iptv.util.ConstantUtil
 import com.dhiman.iptv.util.ProgressDialogPref
-import com.dhiman.iptv.util.RecyclerViewClickListener
 import com.dhiman.iptv.util.gone
 import com.dhiman.iptv.util.hideKeyboard
-import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LiveProgramListNewActivity :
-    BaseActivity<ActivityLiveListNewBinding>(ActivityLiveListNewBinding::inflate),
-    RecyclerViewClickListener {
+class LiveProgramListNewActivity : Fragment() {
 
     @Inject
     lateinit var sharedPrefs: SharedPrefs
+
+    var binding: ActivityLiveListNewBinding ?=null
     private val viewModel: ListProgramListNewViewModel by viewModels()
     private lateinit var programListPaginationAdapter: LiveProgramListViewPagingAdapter
     private lateinit var programGridPaginationAdapter: LiveProgramGridViewPagingAdapter
@@ -54,8 +54,20 @@ class LiveProgramListNewActivity :
     private var isLoading = false
     private lateinit var currentUserModel: UserModel
 
-    override fun onActivityReady() {
-        binding.viewModel = viewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = ActivityLiveListNewBinding.inflate(inflater!!, container, false)
+        binding?.lifecycleOwner = this
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.viewModel = viewModel
 
         /** View Initialization & Setup UI & Data */
         initView()
@@ -66,18 +78,19 @@ class LiveProgramListNewActivity :
         /** Recycler View Adapters */
         manageProgramAdapter()
 
-       channelUnderCategoryAdapter()
+        channelUnderCategoryAdapter()
 
         setDateAdapter()
         setTimeEventAdapter()
     }
+
 
     /** View Initialization & Setup UI & Data */
     private fun initView() {
         currentUserModel = sharedPrefs.getCurrentUser()
         if (currentUserModel.playListType.equals(ConstantUtil.FILE, true)) {
             binding.apply {
-                etSearch.gone()
+                this?.etSearch?.gone()
 //                dataLinearLayout.gone()
 //                exploreAllLinearLayout.visible()
             }
@@ -89,7 +102,7 @@ class LiveProgramListNewActivity :
 
     /** Edit Text Listener */
     private fun editTextListeners() {
-        binding.etSearch.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+        binding?.etSearch?.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     hideKeyboard()
@@ -130,7 +143,7 @@ class LiveProgramListNewActivity :
     private fun setupObserver() {
         if (!isLoading) {
             isLoading = true
-            ProgressDialogPref.showLoader(this@LiveProgramListNewActivity)
+            ProgressDialogPref.showLoader(requireActivity())
         }
 //        binding.loadingLinearLayout.visible()
         viewModel.liveCategoriesData.observe(this) {
@@ -177,7 +190,7 @@ class LiveProgramListNewActivity :
      */
     private fun fetchSelectedVideoStreamCategories(categoryId: String) {
         lifecycleScope.launch {
-            viewModel.getSelectedLiveStream(categoryId, binding.etSearch.text.toString())
+            viewModel.getSelectedLiveStream(categoryId, binding?.etSearch?.text.toString())
                 .collectLatest {
                     try {
                         Handler(Looper.getMainLooper()).postDelayed({
@@ -235,16 +248,16 @@ class LiveProgramListNewActivity :
             LiveCategoryModel(categoryId = "9", categoryName = "Kids Channels")
         )
 
-        val mLayoutManager = LinearLayoutManager(this)
-        binding.rvProgramNameList.layoutManager = mLayoutManager
+        val mLayoutManager = LinearLayoutManager(requireContext())
+        binding?.rvProgramNameList?.layoutManager = mLayoutManager
 
         programNameAdapter = LiveProgramNameListNewAdapter(programNameList) { pos ->
             selectedPosition = pos
-            binding.selectedChannelsTitleTxt.text=programNameList.get(pos).categoryName
-            binding.rvProgramNameList.smoothScrollToPosition(pos)
+            binding?.selectedChannelsTitleTxt?.text=programNameList.get(pos).categoryName
+            binding?.rvProgramNameList?.smoothScrollToPosition(pos)
             //fetchAllVideoStream()
         }
-        binding.rvProgramNameList.adapter = programNameAdapter
+        binding?.rvProgramNameList?.adapter = programNameAdapter
     }
 
     /**
@@ -297,16 +310,16 @@ class LiveProgramListNewActivity :
         )
 
 
-        val mLayoutManager = LinearLayoutManager(this)
-        binding.rvChannelName.layoutManager = mLayoutManager
+        val mLayoutManager = LinearLayoutManager(requireContext())
+        binding?.rvChannelName?.layoutManager = mLayoutManager
 
         channelUnderCategoryAdapter = ChannelUnderCategoryAdapter(channelsList) { pos ->
          //   selectedPosition = pos
-            binding.imgChannelLogo.setImageResource(com.dhiman.iptv.R.drawable.ic_launcher_background)
-            binding.rvChannelName.smoothScrollToPosition(pos)
+            binding?.imgChannelLogo?.setImageResource(com.dhiman.iptv.R.drawable.ic_launcher_background)
+            binding?.rvChannelName?.smoothScrollToPosition(pos)
           //  fetchAllVideoStream()
         }
-        binding.rvChannelName.adapter = channelUnderCategoryAdapter
+        binding?.rvChannelName?.adapter = channelUnderCategoryAdapter
     }
 
 
@@ -315,15 +328,15 @@ class LiveProgramListNewActivity :
 
        dateAdapter = DateAdapter(dates) { selectedDate ->
             // Do something with selected date
-            Toast.makeText(this@LiveProgramListNewActivity, "Selected: $selectedDate", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Selected: $selectedDate", Toast.LENGTH_SHORT).show()
         }
-        binding.rvDate.adapter = dateAdapter
+        binding?.rvDate?.adapter = dateAdapter
 
     }
 
     fun setTimeEventAdapter(){
 
-        binding.rvTime.layoutManager = LinearLayoutManager(this)
+        binding?.rvTime?.layoutManager = LinearLayoutManager(requireContext())
 
         val scheduleList = listOf(
             "9:30 AM" to "India vs Australia Test Match",
@@ -332,7 +345,7 @@ class LiveProgramListNewActivity :
         )
 
         scheduleAdapter = ScheduleAdapter(scheduleList)
-        binding.rvTime.adapter=scheduleAdapter
+        binding?.rvTime?.adapter=scheduleAdapter
 
 
     }
@@ -360,7 +373,7 @@ class LiveProgramListNewActivity :
     /**
      * RecyclerView Click Listeners
      */
-    override fun onClick(view: View, position: Int, selectedModel: Any, childPosition: Int) {
+   /* override fun onClick(view: View, position: Int, selectedModel: Any, childPosition: Int) {
         if (selectedModel is LiveStreamCategory) {
             if (childPosition == -1) {
                 val dataArrayList = ArrayList<String>()
@@ -379,14 +392,14 @@ class LiveProgramListNewActivity :
                 val liveFullUrl =
                     currentUserModel.mainUrl + "/" + currentUserModel.userName + "/" + currentUserModel.password + "/" + selectedModel.streamId
 
-                /** MultiScreen Resource Selection */
+                *//** MultiScreen Resource Selection *//*
                 if (intent.hasExtra(ConstantUtil.INTENT_MULTI_SCREEN_RESOURCE)) {
                     val returnIntent = Intent()
                     returnIntent.putExtra(ConstantUtil.INTENT_VIDEO_URL, liveFullUrl)
                     setResult(RESULT_OK, returnIntent)
                     finish()
                 }
-                /** PLay Video on Selection */
+                *//** PLay Video on Selection *//*
                 else {
                     val intent = Intent(this, PlayerActivity::class.java)
                     intent.putExtra(ConstantUtil.INTENT_ID, liveFullUrl)
@@ -426,6 +439,6 @@ class LiveProgramListNewActivity :
             }
         }
 
-    }
+    }*/
 
 }

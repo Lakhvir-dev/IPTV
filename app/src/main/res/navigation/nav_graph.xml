@@ -10,17 +10,17 @@
         android:name="com.dhiman.iptv.activity.catch_up.CatchUpFragment"
         android:label="Catch Up" />
 
-    <activity
+    <fragment
         android:id="@+id/liveProgramList"
         android:name="com.dhiman.iptv.activity.live_program_list.LiveProgramListNewActivity"
         android:label="Live Program List" />
 
-    <activity
+    <fragment
         android:id="@+id/moviesActivity"
         android:name="com.dhiman.iptv.activity.movie_program_list.MovieProgramListActivity"
         android:label="Movies Program List" />
 
-  <activity
+  <fragment
         android:id="@+id/seriesActivity"
         android:name="com.dhiman.iptv.activity.series_program.SeriesProgramActivity"
         android:label="Series Program List" />

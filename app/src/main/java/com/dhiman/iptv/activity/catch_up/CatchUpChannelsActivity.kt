@@ -53,7 +53,29 @@ class CatchUpChannelsActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         setupSidebarNavigation()
+        getIntentData()
+    }
 
+    fun getIntentData() {
+        if (intent.hasExtra("type")) {
+            val type = intent.getStringExtra("type") ?: ""
+
+            // Determine the destination based on the type
+            val destinationId = when (type) {
+                "live" -> R.id.liveProgramList
+                "movies" -> R.id.moviesActivity // This will launch an Activity
+                "series" -> R.id.seriesActivity // This will launch an Activity
+                "catchup" -> R.id.catchUpFragment
+                // Add other types and destinations as needed
+                // "search" -> R.id.searchFragment
+
+                // It's good practice to have a default, even if it's the graph's start destination
+                else -> R.id.liveProgramList
+            }
+
+            // Use the navigateIfNotCurrent function to go to the destination
+            navigateIfNotCurrent(destinationId)
+        }
     }
 
     private fun setupSidebarNavigation() {
@@ -78,7 +100,8 @@ class CatchUpChannelsActivity : AppCompatActivity() {
     }
 
     private fun navigateIfNotCurrent(destinationId: Int) {
-        if (navController.currentDestination?.id != destinationId) {
+        // Check if the NavController is initialized and the destination is different
+        if (::navController.isInitialized && navController.currentDestination?.id != destinationId) {
             navController.navigate(destinationId)
         }
     }

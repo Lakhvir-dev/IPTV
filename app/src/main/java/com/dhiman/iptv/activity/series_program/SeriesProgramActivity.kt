@@ -1,10 +1,13 @@
 package com.dhiman.iptv.activity.series_program
 
 import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dhiman.iptv.activity.BaseActivity
 import com.dhiman.iptv.activity.movie_program_list.MovieProgramListActivity.Category
 import com.dhiman.iptv.activity.movie_program_list.MovieProgramListActivity.Movie
 import com.dhiman.iptv.activity.movie_program_list.adapter.CategoryAdapter
@@ -13,24 +16,36 @@ import com.dhiman.iptv.activity.series_program.adapter.SeriesCategoryAdapter
 import com.dhiman.iptv.databinding.ActivitySeriesProgramBinding
 import com.dhiman.iptv.util.ConstantUtil
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.fragment.app.viewModels
+
 
 @AndroidEntryPoint
-class SeriesProgramActivity : BaseActivity<ActivitySeriesProgramBinding>(
-    ActivitySeriesProgramBinding::inflate
-) {
+class SeriesProgramActivity : Fragment()  {
+    var binding: ActivitySeriesProgramBinding? = null
     lateinit var categoryAdapter: CategoryAdapter
     private val viewModel: SeriesProgramListViewModel by viewModels()
 
-    override fun onActivityReady() {
-        binding.viewModel = viewModel
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = ActivitySeriesProgramBinding.inflate(inflater, container, false)
+        binding?.lifecycleOwner = this
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.viewModel = viewModel
         putMoviesData()
         categoryAdapter()
         handleClicks()
     }
 
     fun handleClicks(){
-        binding.menuIcon.setOnClickListener {
-            startActivity(Intent(this@SeriesProgramActivity, SeriesDetailsActivity::class.java))
+        binding?.menuIcon?.setOnClickListener {
+                startActivity(Intent(requireContext(), SeriesDetailsActivity::class.java))
         }
     }
 
@@ -68,13 +83,13 @@ class SeriesProgramActivity : BaseActivity<ActivitySeriesProgramBinding>(
             Category("Recently Added", recentlyAdded)
         )
 
-        binding.movieGridRv.layoutManager = LinearLayoutManager(this)
+        binding?.movieGridRv?.layoutManager = LinearLayoutManager(requireContext())
         categoryAdapter=CategoryAdapter(categoryList){url->
-            val intent = Intent(this, PlayerActivity::class.java)
+            val intent = Intent(requireContext(), PlayerActivity::class.java)
             intent.putExtra(ConstantUtil.INTENT_ID, url)
             startActivity(intent)
         }
-        binding.movieGridRv.adapter = categoryAdapter
+        binding?.movieGridRv?.adapter = categoryAdapter
 
     }
 
@@ -92,12 +107,12 @@ class SeriesProgramActivity : BaseActivity<ActivitySeriesProgramBinding>(
         )
 
         val adapter = SeriesCategoryAdapter(categoryList) { category ->
-            Toast.makeText(this, "Clicked: ${category.categoryName}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Clicked: ${category.categoryName}", Toast.LENGTH_SHORT).show()
         }
 
-        binding.seriesCategoryRv.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.seriesCategoryRv.adapter = adapter
+        binding?.seriesCategoryRv?.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding?.seriesCategoryRv?.adapter = adapter
 
     }
 

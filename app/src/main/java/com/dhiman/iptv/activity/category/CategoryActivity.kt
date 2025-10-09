@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import com.dhiman.iptv.activity.BaseActivity
 import com.dhiman.iptv.activity.catch_up.CatchUpAdapter
+import com.dhiman.iptv.activity.catch_up.CatchUpChannelsActivity
 import com.dhiman.iptv.activity.movie_program_list.MovieProgramListActivity
 import com.dhiman.iptv.activity.movie_program_list.MovieProgramListActivity.Movie
 import com.dhiman.iptv.activity.movie_program_list.MovieProgramListViewModel
@@ -77,15 +78,8 @@ class CategoryActivity : BaseActivity<CategotyActivityBinding>(
             Movie("Avengers", com.dhiman.iptv.R.drawable.avengers),
         )
         val adapter = MovieAdapter(favourites){
-            if (type=="movies"){
-                val intent = Intent(this, MovieProgramListActivity::class.java)
+                val intent = Intent(this, CatchUpChannelsActivity::class.java).putExtra("type",type)
                 startActivity(intent)
-            }
-            else{
-                val intent = Intent(this, SeriesProgramActivity::class.java)
-                startActivity(intent)
-            }
-
         }
             binding.rvMovies.adapter = adapter
         }

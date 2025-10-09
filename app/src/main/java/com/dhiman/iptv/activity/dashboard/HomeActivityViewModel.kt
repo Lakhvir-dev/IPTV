@@ -100,7 +100,7 @@ class HomeActivityViewModel @Inject constructor(
 
             R.id.live -> {
                 view.context.apply {
-                    startActivity(Intent(this, LiveProgramListNewActivity::class.java))
+                    startActivity(Intent(this, CatchUpChannelsActivity::class.java).putExtra("type","live"))
                 }
             }
 
