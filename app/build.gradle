@@ -156,4 +156,7 @@ dependencies {
     implementation 'androidx.leanback:leanback:1.2.0'
     implementation 'com.github.poovamraj:PinEditTextField:1.2.6'
 
+    //speedTest
+    implementation 'com.github.anastr:speedviewlib:1.6.1'
+
 }

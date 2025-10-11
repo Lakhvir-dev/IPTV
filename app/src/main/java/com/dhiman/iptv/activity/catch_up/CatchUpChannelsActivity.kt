@@ -1,22 +1,16 @@
 package com.dhiman.iptv.activity.catch_up
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import com.dhiman.iptv.R
-import com.dhiman.iptv.activity.player.PlayerActivity
 import com.dhiman.iptv.data.local.prefs.SharedPrefs
 import com.dhiman.iptv.data.model.UserModel
-import com.dhiman.iptv.data.model.catchUp.EpgListings
 import com.dhiman.iptv.databinding.ActivityCatchUpChannelsBinding
-import com.dhiman.iptv.util.*
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -100,9 +94,11 @@ class CatchUpChannelsActivity : AppCompatActivity() {
     }
 
     private fun navigateIfNotCurrent(destinationId: Int) {
-        // Check if the NavController is initialized and the destination is different
         if (::navController.isInitialized && navController.currentDestination?.id != destinationId) {
-            navController.navigate(destinationId)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.catchUpFragment, true) // Key line!
+                .build()
+            navController.navigate(destinationId,null, navOptions)
         }
     }
 
