@@ -183,12 +183,12 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
                         delay(500)
-                       /* val getSeriesStreamCategoriesCall = async {
+                        val getSeriesStreamCategoriesCall = async {
                             apiRepository.getSeriesStreamCategories(
                                 currentUserModel,
                                 ConstantUtil.SERIES_STREAM_ACTION
                             )
-                        }*/
+                        }
                         delay(500)
                         val getEPGCall = async {
                             apiRepository.getEPG(
@@ -196,12 +196,12 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
                         delay(500)
-                      /*  val getLiveCategoriesCall = async {
+                        val getLiveCategoriesCall = async {
                             apiRepository.getLiveCategories(
                                 currentUserModel,
                                 ConstantUtil.LIVE_ACTION
                             )
-                        }*/
+                        }
                         delay(500)
                         val getVideoCategoriesCall = async {
                             apiRepository.getVideoCategories(
@@ -210,35 +210,32 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
                         delay(500)
-                       /* val getSeriesCategoriesCall = async {
+                        val getSeriesCategoriesCall = async {
                             apiRepository.getSeriesCategories(
                                 currentUserModel,
                                 ConstantUtil.SERIES_ACTION
                             )
-                        }*/
+                        }
+
                         delay(500)
-/*
                         val getLiveStreamCategoriesCall = async {
                             apiRepository.getLiveStreamCategories(
                                 currentUserModel,
                                 ConstantUtil.LIVE_STREAM_ACTION
                             )
                         }
-*/
 
                         val getVideoStreamCategoriesResponse = getVideoStreamCategoriesCall.await()
-//                        val getSeriesStreamCategoriesResponse =
-//                            getSeriesStreamCategoriesCall.await()
-                //        val getLiveCategoriesResponse = getLiveCategoriesCall.await()
+                        val getSeriesStreamCategoriesResponse = getSeriesStreamCategoriesCall.await()
+                        val getLiveCategoriesResponse = getLiveCategoriesCall.await()
                         val getVideoCategoriesResponse = getVideoCategoriesCall.await()
                         val getEPGResponse =
                             getEPGCall.await()
-                   //     val getSeriesCategoriesResponse = getSeriesCategoriesCall.await()
-                   //     val getLiveStreamCategoriesResponse = getLiveStreamCategoriesCall.await()
-
-//                        if (getLiveCategoriesResponse.isSuccessful) {
-//                            liveCategoriesData.postValue(Resource.success(getLiveCategoriesResponse.body()))
-//                        }
+                       val getSeriesCategoriesResponse = getSeriesCategoriesCall.await()
+                        val getLiveStreamCategoriesResponse = getLiveStreamCategoriesCall.await()
+                        if (getLiveCategoriesResponse.isSuccessful) {
+                           liveCategoriesData.postValue(Resource.success(getLiveCategoriesResponse.body()))
+                        }
 
                         if (getVideoCategoriesResponse.isSuccessful) {
                             videoCategoriesData.postValue(
@@ -248,21 +245,21 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
 
-//                        if (getSeriesCategoriesResponse.isSuccessful) {
-//                            seriesCategoriesData.postValue(
-//                                Resource.success(
-//                                    getSeriesCategoriesResponse.body()
-//                                )
-//                            )
-//                        }
+                        if (getSeriesCategoriesResponse.isSuccessful) {
+                            seriesCategoriesData.postValue(
+                                Resource.success(
+                                    getSeriesCategoriesResponse.body()
+                                )
+                            )
+                        }
 
-//                        if (getLiveStreamCategoriesResponse.isSuccessful) {
-//                            liveStreamCategoriesData.postValue(
-//                                Resource.success(
-//                                    getLiveStreamCategoriesResponse.body()
-//                                )
-//                            )
-//                        }
+                        if (getLiveStreamCategoriesResponse.isSuccessful) {
+                            liveStreamCategoriesData.postValue(
+                                Resource.success(
+                                    getLiveStreamCategoriesResponse.body()
+                                )
+                            )
+                        }
 
                         if (getVideoStreamCategoriesResponse.isSuccessful) {
                             videoStreamCategoriesData.postValue(
@@ -272,13 +269,13 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
 
-//                        if (getSeriesStreamCategoriesResponse.isSuccessful) {
-//                            seriesStreamCategoriesData.postValue(
-//                                Resource.success(
-//                                    getSeriesStreamCategoriesResponse.body()
-//                                )
-//                            )
-//                        }
+                        if (getSeriesStreamCategoriesResponse.isSuccessful) {
+                            seriesStreamCategoriesData.postValue(
+                                Resource.success(
+                                    getSeriesStreamCategoriesResponse.body()
+                                )
+                            )
+                        }
 
                         // ✅ Safely handle huge EPG XML
                         if (getEPGResponse.isSuccessful) {
