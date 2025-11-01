@@ -36,7 +36,7 @@ interface ApiHelper {
     suspend fun getSeriesInfo(currentUserModel: UserModel, action: String, seriesId: String)
             : Response<String>
 
-    suspend fun getEPG(currentUserModel: UserModel): Response<String>
+    suspend fun getEPG(currentUserModel: UserModel): Response<ResponseBody>
 
     suspend fun getCatchUpChannelPrograms(
         currentUserModel: UserModel,

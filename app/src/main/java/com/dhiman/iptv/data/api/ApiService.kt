@@ -92,7 +92,7 @@ interface ApiService {
         @Url baseUrl: String,
         @Query("username") username: String,
         @Query("password") password: String,
-    ): Response<String>
+    ): Response<ResponseBody>
 
     @GET
     suspend fun getCatchUpChannelPrograms(

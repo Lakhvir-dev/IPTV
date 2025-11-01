@@ -20,6 +20,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import javax.inject.Inject
 
 @HiltViewModel
@@ -181,12 +183,12 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
                         delay(500)
-                        val getSeriesStreamCategoriesCall = async {
+                       /* val getSeriesStreamCategoriesCall = async {
                             apiRepository.getSeriesStreamCategories(
                                 currentUserModel,
                                 ConstantUtil.SERIES_STREAM_ACTION
                             )
-                        }
+                        }*/
                         delay(500)
                         val getEPGCall = async {
                             apiRepository.getEPG(
@@ -194,12 +196,12 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
                         delay(500)
-                        val getLiveCategoriesCall = async {
+                      /*  val getLiveCategoriesCall = async {
                             apiRepository.getLiveCategories(
                                 currentUserModel,
                                 ConstantUtil.LIVE_ACTION
                             )
-                        }
+                        }*/
                         delay(500)
                         val getVideoCategoriesCall = async {
                             apiRepository.getVideoCategories(
@@ -208,33 +210,35 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
                         delay(500)
-                        val getSeriesCategoriesCall = async {
+                       /* val getSeriesCategoriesCall = async {
                             apiRepository.getSeriesCategories(
                                 currentUserModel,
                                 ConstantUtil.SERIES_ACTION
                             )
-                        }
+                        }*/
                         delay(500)
+/*
                         val getLiveStreamCategoriesCall = async {
                             apiRepository.getLiveStreamCategories(
                                 currentUserModel,
                                 ConstantUtil.LIVE_STREAM_ACTION
                             )
                         }
+*/
 
                         val getVideoStreamCategoriesResponse = getVideoStreamCategoriesCall.await()
-                        val getSeriesStreamCategoriesResponse =
-                            getSeriesStreamCategoriesCall.await()
+//                        val getSeriesStreamCategoriesResponse =
+//                            getSeriesStreamCategoriesCall.await()
+                //        val getLiveCategoriesResponse = getLiveCategoriesCall.await()
+                        val getVideoCategoriesResponse = getVideoCategoriesCall.await()
                         val getEPGResponse =
                             getEPGCall.await()
-                        val getLiveCategoriesResponse = getLiveCategoriesCall.await()
-                        val getVideoCategoriesResponse = getVideoCategoriesCall.await()
-                        val getSeriesCategoriesResponse = getSeriesCategoriesCall.await()
-                        val getLiveStreamCategoriesResponse = getLiveStreamCategoriesCall.await()
+                   //     val getSeriesCategoriesResponse = getSeriesCategoriesCall.await()
+                   //     val getLiveStreamCategoriesResponse = getLiveStreamCategoriesCall.await()
 
-                        if (getLiveCategoriesResponse.isSuccessful) {
-                            liveCategoriesData.postValue(Resource.success(getLiveCategoriesResponse.body()))
-                        }
+//                        if (getLiveCategoriesResponse.isSuccessful) {
+//                            liveCategoriesData.postValue(Resource.success(getLiveCategoriesResponse.body()))
+//                        }
 
                         if (getVideoCategoriesResponse.isSuccessful) {
                             videoCategoriesData.postValue(
@@ -244,21 +248,21 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
 
-                        if (getSeriesCategoriesResponse.isSuccessful) {
-                            seriesCategoriesData.postValue(
-                                Resource.success(
-                                    getSeriesCategoriesResponse.body()
-                                )
-                            )
-                        }
+//                        if (getSeriesCategoriesResponse.isSuccessful) {
+//                            seriesCategoriesData.postValue(
+//                                Resource.success(
+//                                    getSeriesCategoriesResponse.body()
+//                                )
+//                            )
+//                        }
 
-                        if (getLiveStreamCategoriesResponse.isSuccessful) {
-                            liveStreamCategoriesData.postValue(
-                                Resource.success(
-                                    getLiveStreamCategoriesResponse.body()
-                                )
-                            )
-                        }
+//                        if (getLiveStreamCategoriesResponse.isSuccessful) {
+//                            liveStreamCategoriesData.postValue(
+//                                Resource.success(
+//                                    getLiveStreamCategoriesResponse.body()
+//                                )
+//                            )
+//                        }
 
                         if (getVideoStreamCategoriesResponse.isSuccessful) {
                             videoStreamCategoriesData.postValue(
@@ -268,17 +272,37 @@ class LoadingDialogViewModel @Inject constructor(
                             )
                         }
 
-                        if (getSeriesStreamCategoriesResponse.isSuccessful) {
-                            seriesStreamCategoriesData.postValue(
-                                Resource.success(
-                                    getSeriesStreamCategoriesResponse.body()
-                                )
-                            )
-                        }
+//                        if (getSeriesStreamCategoriesResponse.isSuccessful) {
+//                            seriesStreamCategoriesData.postValue(
+//                                Resource.success(
+//                                    getSeriesStreamCategoriesResponse.body()
+//                                )
+//                            )
+//                        }
 
+                        // ✅ Safely handle huge EPG XML
                         if (getEPGResponse.isSuccessful) {
-                            getEPGResponse.body()?.let { response ->
-                                val xmlToJson = XmlToJson.Builder(response).build()
+                            getEPGResponse.body()?.use { body ->
+                                val inputStream = body.byteStream()
+                                val reader = BufferedReader(InputStreamReader(inputStream))
+                                val builder = StringBuilder()
+                                var line: String?
+
+                                // Read XML in chunks (not all at once)
+                                var lineCount = 0
+                                while (reader.readLine().also { line = it } != null) {
+                                    builder.append(line)
+                                    lineCount++
+
+                                    // (Optional) limit to avoid loading entire huge XML during debug
+                                    // if (lineCount > 10000) break
+                                }
+
+                                val xmlString = builder.toString()
+                                Log.d("EPG_XML", xmlString.take(500)) // preview first 500 chars
+
+                                // ✅ Convert XML → JSON
+                                val xmlToJson = XmlToJson.Builder(xmlString).build()
                                 val jsonObject = xmlToJson.toJson()
                                 jsonObject?.let {
                                     val dataArrayList = ArrayList<EpgModel>()

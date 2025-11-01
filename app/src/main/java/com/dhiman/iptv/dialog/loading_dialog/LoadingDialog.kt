@@ -59,11 +59,11 @@ class LoadingDialog : DialogFragment() {
     /** Fetch All Live Categories */
     private fun getAllCategoriesAsPerLogin() {
         currentUserModel = sharedPrefs.getCurrentUser()
-        if (currentUserModel.playListType == ConstantUtil.XTREAM_URL) {
+       // if (currentUserModel.playListType == ConstantUtil.XTREAM_URL) {
               viewModel.getAllTypeCategories(currentUserModel)
             //viewModel.allApiCall(currentUserModel)
             //   viewModel.getAllTypeCategory(currentUserModel)
-        }
+       // }
     }
 
     /** Observer Listeners */
@@ -193,7 +193,7 @@ class LoadingDialog : DialogFragment() {
                         ConstantUtil.CHANNEL_REFRESH_DATE,
                         DateFormatUtils.todayStartTime()
                     )
-                    callBack?.invoke()
+                //    callBack?.invoke()
                 }
             }
         }

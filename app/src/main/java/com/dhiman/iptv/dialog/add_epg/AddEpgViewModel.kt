@@ -1,5 +1,6 @@
 package com.dhiman.iptv.dialog.add_epg
 
+import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
@@ -21,6 +22,8 @@ import fr.arnaudguyon.xmltojsonlib.XmlToJson
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import javax.inject.Inject
 
 @HiltViewModel
@@ -68,61 +71,81 @@ class AddEpgViewModel @Inject constructor(
     fun getAllEpg(currentUserModel: UserModel) {
         viewModelScope.launch {
             epgData.postValue(Resource.loading(null))
+
             if (networkHelper.isNetworkConnected()) {
                 try {
                     coroutineScope {
-                        val getEPGCall = async {
-                            mainRepository.getEPG(
-                                currentUserModel
-                            )
-                        }
+                        val getEPGCall = async { mainRepository.getEPG(currentUserModel) }
                         val getLiveCategoriesCall = async {
-                            mainRepository.getLiveCategories(
-                                currentUserModel,
-                                ConstantUtil.LIVE_ACTION
-                            )
+                            mainRepository.getLiveCategories(currentUserModel, ConstantUtil.LIVE_ACTION)
                         }
+                        //get_live_stream
                         val getLiveStreamCategoriesCall = async {
-                            mainRepository.getLiveStreamCategories(
-                                currentUserModel,
-                                ConstantUtil.LIVE_STREAM_ACTION
-                            )
+                            mainRepository.getLiveStreamCategories(currentUserModel, ConstantUtil.LIVE_STREAM_ACTION)
                         }
 
-                        val getEPGResponse =
-                            getEPGCall.await()
+                        val getEPGResponse = getEPGCall.await()
                         val getLiveCategoriesResponse = getLiveCategoriesCall.await()
                         val getLiveStreamCategoriesResponse = getLiveStreamCategoriesCall.await()
 
+                        // ✅ Post Live Data responses
                         liveCategoriesData.postValue(Resource.success(getLiveCategoriesResponse.body()))
-                        liveStreamCategoriesData.postValue(
-                            Resource.success(
-                                getLiveStreamCategoriesResponse.body()
-                            )
-                        )
-                        getEPGResponse.body()?.let { response ->
-                            val xmlToJson = XmlToJson.Builder(response).build()
-                            val jsonObject = xmlToJson.toJson()
-                            jsonObject?.let {
-                                val dataArrayList = ArrayList<EpgModel>()
+                        liveStreamCategoriesData.postValue(Resource.success(getLiveStreamCategoriesResponse.body()))
 
-                                val tvJsonObject = it.getJSONObject("tv")
-                                val programJsonArray = tvJsonObject.getJSONArray("programme")
-                                for (x in 0 until programJsonArray.length()) {
-                                    val dataObject = programJsonArray.getJSONObject(x)
-                                    val epgModel = EpgModel()
-                                    epgModel.channel = dataObject.getString("channel")
-                                    epgModel.desc = dataObject.getString("desc")
-                                    epgModel.start = dataObject.getString("start")
-                                    epgModel.stop = dataObject.getString("stop")
-                                    epgModel.title = dataObject.getString("title")
-                                    dataArrayList.add(epgModel)
+                        // ✅ Safely handle huge EPG XML
+                        if (getEPGResponse.isSuccessful) {
+                            getEPGResponse.body()?.use { body ->
+                                val inputStream = body.byteStream()
+                                val reader = BufferedReader(InputStreamReader(inputStream))
+                                val builder = StringBuilder()
+                                var line: String?
+
+                                // Read XML in chunks (not all at once)
+                                var lineCount = 0
+                                while (reader.readLine().also { line = it } != null) {
+                                    builder.append(line)
+                                    lineCount++
+
+                                    // (Optional) limit to avoid loading entire huge XML during debug
+                                    // if (lineCount > 10000) break
                                 }
-                                epgData.postValue(Resource.success(dataArrayList))
+
+                                val xmlString = builder.toString()
+                                Log.d("EPG_XML", xmlString.take(500)) // preview first 500 chars
+
+                                // ✅ Convert XML → JSON
+                                val xmlToJson = XmlToJson.Builder(xmlString).build()
+                                val jsonObject = xmlToJson.toJson()
+
+                                jsonObject?.let {
+                                    if (it.has("tv")) {
+                                        val dataArrayList = ArrayList<EpgModel>()
+                                        val tvJsonObject = it.getJSONObject("tv")
+                                        val programJsonArray = tvJsonObject.getJSONArray("programme")
+
+                                        for (x in 0 until programJsonArray.length()) {
+                                            val dataObject = programJsonArray.getJSONObject(x)
+                                            val epgModel = EpgModel().apply {
+                                                channel = dataObject.optString("channel")
+                                                desc = dataObject.optString("desc")
+                                                start = dataObject.optString("start")
+                                                stop = dataObject.optString("stop")
+                                                title = dataObject.optString("title")
+                                            }
+                                            dataArrayList.add(epgModel)
+                                        }
+
+                                        epgData.postValue(Resource.success(dataArrayList))
+                                    }
+                                }
                             }
+                        } else {
+                            Log.e("EPG_ERROR_BODY", getEPGResponse.errorBody()?.string() ?: "Unknown error")
+                            epgData.postValue(Resource.error("EPG request failed", null))
                         }
                     }
                 } catch (e: Exception) {
+                    Log.e("EPG_EXCEPTION", "Error: ${e.localizedMessage}")
                     epgData.postValue(Resource.error(e.localizedMessage, null))
                 }
             } else {
@@ -130,6 +153,7 @@ class AddEpgViewModel @Inject constructor(
             }
         }
     }
+
 
     fun deleteAllEPGFromRoomDatabase() {
         viewModelScope.launch {

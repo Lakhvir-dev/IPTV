@@ -85,7 +85,7 @@ class FetchAllDataWorker @AssistedInject constructor(
             roomRepository.insertAllLiveStreamCategories(getLiveStreamCategoriesCall)
 
 
-            val xmlToJson = XmlToJson.Builder(getEPGCall).build()
+            val xmlToJson = XmlToJson.Builder(getEPGCall.string()).build()
             val jsonObject = xmlToJson.toJson()
             jsonObject?.let {
                 val dataArrayList = ArrayList<EpgModel>()

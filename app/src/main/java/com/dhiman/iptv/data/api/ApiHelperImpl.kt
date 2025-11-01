@@ -107,7 +107,7 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : Ap
 
     override suspend fun getEPG(
         currentUserModel: UserModel
-    ): Response<String> = apiService.getEPG(
+    ): Response<ResponseBody> = apiService.getEPG(
         currentUserModel.mainUrl + "/xmltv.php",
         currentUserModel.userName,
         currentUserModel.password
