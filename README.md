@@ -13,7 +13,8 @@
 
 ### 🎥 Movie Details
 
-![Uploading image.png…]()
+<img width="1104" height="618" alt="image" src="https://github.com/user-attachments/assets/a7934ffe-89fb-4de4-917a-8edfaa4c3a9e" />
+
 
 ### ▶️ Video Player
 
