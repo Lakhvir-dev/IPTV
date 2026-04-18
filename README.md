@@ -1,4 +1,3 @@
-<img width="1322" height="717" alt="image" src="https://github.com/user-attachments/assets/7c03a0c2-1eab-480a-9540-fafb029b80f4" />## 📸 Screenshots
 
 ### 📺 Login Screen
 
