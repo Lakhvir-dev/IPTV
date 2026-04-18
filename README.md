@@ -1,11 +1,11 @@
 
 ### 📺 Login Screen
 
-![Login ]<img width="954" height="519" alt="image" src="https://github.com/user-attachments/assets/9ae55c0c-ddb2-43bb-9bc8-a7e8b9f2da7e" />)
+<img width="1313" height="732" alt="image" src="https://github.com/user-attachments/assets/c541678a-aff1-4ac5-aeae-bb8a3f077219" />
 
 ### 🏠 Home Screen
 
-![Home](<img width="1108" height="612" alt="image" src="https://github.com/user-attachments/assets/9c0ada36-5c91-41a1-bc8a-0ff8640bfb6d" />)
+<img width="949" height="532" alt="image" src="https://github.com/user-attachments/assets/47a9c5eb-1766-4e6d-8cb6-1248e8013fa6" />
 
 ### 🎬 Movies List
 
