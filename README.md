@@ -9,11 +9,11 @@
 
 ### 🎬 Movies List
 
-![Movies](<img width="1322" height="736" alt="image" src="https://github.com/user-attachments/assets/4a3ee48e-3ba2-4f80-b510-5120d7fd5169" />)
+<img width="1311" height="724" alt="image" src="https://github.com/user-attachments/assets/18af2cad-cdae-4b52-adb6-3081ddc5115a" />
 
 ### 🎥 Movie Details
 
-![Details](<img width="1311" height="705" alt="image" src="https://github.com/user-attachments/assets/5516e5df-e97c-4b0f-842e-68290973ff02" />)
+![Uploading image.png…]()
 
 ### ▶️ Video Player
 
